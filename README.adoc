@@ -1,0 +1,22 @@
+= shell
+
+This repository contains configuration files for the (bash) shell.
+
+
+== Installation
+
+Clone the repository inside your .config folder (or wherewer you like)
+----
+git clone https://github.com/fekir/shell.git "$HOME/.config/shell/"
+----
+
+and add following line to your current .bashrc
+
+----
+# include main.bashrc if it exists
+if [ -f "$HOME/.config/shell/main.bashrc" ]; then
+    . "$HOME/.config/shell/main.bashrc"
+fi
+----
+
+That's all folks!
