@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
 # ls
-define_alias_ifndef 'll' 'ls -lh'
-define_alias_ifndef 'la' 'ls -a'
-define_alias_ifndef 'l' 'ls'
+eval "$(dircolors)"
+# colors for source files
+src_file_color="01;33"
+LS_COLORS="$LS_COLORS*.cpp=$src_file_color:*.hpp=$src_file_color:*.cxx=$src_file_color:*.hxx=$src_file_color:*.c=$src_file_color:*.h=$src_file_color:*.cmake=$src_file_color:" # c, c++
+LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
+alias ls='ls --color=auto'
+define_alias_ifndef 'll' 'ls -lh --color=auto'
+define_alias_ifndef 'la' 'ls -A --color=auto'
+define_alias_ifndef 'l.' 'ls -Ad .* --color=auto'
+define_alias_ifndef 'll.' 'ls -lhAd .* --color=auto'
+define_alias_ifndef 'l' 'ls --color=auto'
+define_alias_ifndef 'lsd' 'ls --group-directories-first --color=auto'
 
 # wget
 alias wget='wget -c'
@@ -40,8 +49,8 @@ new_alias () {
     fi
   fi
 
-  echo "alias $NAME='$DEFINTION'" >> ~/.new_aliases
-  . ~/.new_aliases
+  echo "alias $NAME='$DEFINTION'" >> "$HOME/.new_aliases"
+  . "$HOME/.new_aliases"
 }
 
 # include aliases added with new-alias
