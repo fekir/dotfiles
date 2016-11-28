@@ -28,10 +28,12 @@ define_alias_opt() {
 }
 
 # checks if dir exists and adds it to path
-# FIXME: check if already in PATH
 append_to_path(){
   if [ -d "$1" ]; then
-    PATH=$PATH:"$1";
+    case ":$PATH:" in
+      *":$1:"*) :;; # already there, do not add it
+      *) PATH="$PATH:$1";;
+    esac
     return 0;
   fi
   return 1;
