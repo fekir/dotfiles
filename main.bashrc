@@ -29,7 +29,8 @@ source_opt_file "$CURRENTDIR/history.bashrc"
 source_opt_file "$CURRENTDIR/common_aliases.bashrc"
 source_opt_file "$CURRENTDIR/temp.bashrc"
 
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+sysname=$(uname -s)
+if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
   source_opt_file "$CURRENTDIR/windows.bashrc"
 fi
 
