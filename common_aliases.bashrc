@@ -24,6 +24,13 @@ alias grep='grep --color=auto'
 # gp
 define_alias_opt 'gp' 'gp' 'gp -q'
 
+# make
+# invoke make with -j"numberofoprocs", you can override it by using -j
+export MAKEFLAGS="-j$(($(grep -c processor /proc/cpuinfo)+1))"
+
+# gcc
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 ######################################
 # new_alias                          #
 # creates new alias & writes to file #
