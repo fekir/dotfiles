@@ -43,3 +43,5 @@ fi
 
 
 append_program_dir_to_path "WiX Toolset v3.10/bin"
+
+alias ls="ls --color=auto --append-exe"
