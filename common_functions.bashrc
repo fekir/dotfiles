@@ -27,7 +27,28 @@ define_alias_opt() {
   fi
 }
 
-# checks if dir exists and adds it to path
+# remove all duplicates from path
+# FIXME: on windows we should be case insensitive and normalize (windows/unix path) all paths
+# since : is present on windows as path separator, we have a problem...
+function rem_dup_from_path(){
+  if [ -n "$PATH" ]; then
+    old_PATH=$PATH:;
+    while [ -n "$old_PATH" ]; do
+      x=${old_PATH%%:*}       # the first remaining entry
+      case $PATH: in
+        *:"$x":*) ;;       # already there
+        *) PATH=$PATH:$x;; # not there yet
+      esac
+      old_PATH=${old_PATH#*:}
+    done
+    PATH=${PATH#:}
+    unset old_PATH x
+  fi
+}
+
+
+# checks if dir exists and adds it to path if not already present
+# fixme: on windows we should convert it to an unix path
 append_to_path(){
   if [ -d "$1" ]; then
     case ":$PATH:" in
