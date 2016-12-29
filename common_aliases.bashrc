@@ -24,6 +24,8 @@ alias grep='grep --color=auto'
 # gp
 define_alias_opt 'gp' 'gp' 'gp -q'
 
+define_alias_opt 'xlsclients' 'show_daemons' 'ps -C "$(xlsclients | cut -d\  -f3 | paste - -s -d \",\")" --ppid 2 --pid 2 --deselect -o tty,uid,pid,ppid,args'
+
 # make
 # invoke make with -j"numberofoprocs", you can override it by using -j
 export MAKEFLAGS="-j$(($(grep -c processor /proc/cpuinfo)+1))"
@@ -31,12 +33,13 @@ export MAKEFLAGS="-j$(($(grep -c processor /proc/cpuinfo)+1))"
 # gcc
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-######################################
-# new_alias                          #
-# creates new alias & writes to file #
-#  $1 = alias new                    #
-#  $2 = alias definition             #
-######################################
+############################################
+# new_alias                                #
+# creates new alias & writes to file       #
+#  $1 = alias new                          #
+#  $2 = alias definition                   #
+# Problems if alias contains single quotes #
+############################################
 new_alias () {
   if [ -z "$1" ]; then
     echo 'alias name:'
