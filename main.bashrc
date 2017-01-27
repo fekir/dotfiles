@@ -8,6 +8,14 @@ case $- in
       *) return;;
 esac
 
+# Fortune message
+if [[ "$TERM" = screen* ]]; then                                                                                                                                                                                  
+  :                                                                                                                                                                                                               
+else                                                                                                                                                                                                              
+  message=$(fortune -s 2>/dev/null || echo "Welcome")                                                                                                                                                             
+  cowsay -f duck -- "$message" 2>/dev/null;                                                                                                                                                                       
+fi
+
 
 # Make sure display get updated when terminal window get resized
 shopt -q -s checkwinsize
@@ -28,6 +36,7 @@ source_opt_file "$CURRENTDIR/xdg_paths.bashrc"
 source_opt_file "$CURRENTDIR/history.bashrc"
 source_opt_file "$CURRENTDIR/common_aliases.bashrc"
 source_opt_file "$CURRENTDIR/temp.bashrc"
+source_opt_file "$CURRENTDIR/dev.bashrc"
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
