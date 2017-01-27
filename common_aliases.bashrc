@@ -21,6 +21,9 @@ alias wget='wget -c'
 #export GREP_OPTIONS='--color=auto' # deprecated --> alternatives without using alias???
 alias grep='grep --color=auto'
 
+# nano, add "set linenumbers" in .nanorc for better line numbers support
+define_alias_opt 'nano' 'nano' 'nano -c'
+
 # gp
 define_alias_opt 'gp' 'gp' 'gp -q'
 
