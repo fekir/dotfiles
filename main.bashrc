@@ -28,15 +28,16 @@ shopt -s cdspell                                    # autocorrects cd misspellin
 CURRENTDIR=$(dirname "${BASH_SOURCE[0]}")
 
 # not optional, defines source_opt_file
-. "$CURRENTDIR/common_functions.bashrc"
+. "$CURRENTDIR/common_functions.shrc"
 
 # optionals
 source_opt_file "$CURRENTDIR/strict_bash.bashrc"
 source_opt_file "$CURRENTDIR/xdg_paths.bashrc"
 source_opt_file "$CURRENTDIR/history.bashrc"
-source_opt_file "$CURRENTDIR/common_aliases.bashrc"
-source_opt_file "$CURRENTDIR/temp.bashrc"
-source_opt_file "$CURRENTDIR/dev.bashrc"
+source_opt_file "$CURRENTDIR/common_aliases.shrc"
+source_opt_file "$CURRENTDIR/temp.shrc"
+source_opt_file "$CURRENTDIR/dev.shrc"
+source_opt_file "$CURRENTDIR/theme.bashrc"
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then

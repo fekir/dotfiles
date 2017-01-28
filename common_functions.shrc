@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # optionally sources one file (if exists)
 source_opt_file() {
@@ -15,15 +15,15 @@ source_bashrc() {
 define_alias_ifndef() {
 #! type $1 &>/dev/null && alias $1="$2"
 # othervise (more verbose):
-  if ! type $1 &> /dev/null; then
-    alias $1="$2";
+  if ! command -v "$1"  > /dev/null 2>&1; then
+    alias "$1"="$2";
   fi
 }
 
 #like normal alias, but checks if the required program is avaiable
 define_alias_opt() {
   if command -v "$1" > /dev/null 2>&1; then
-    alias $2="$3";
+    alias "$2"="$3";
   fi
 }
 
