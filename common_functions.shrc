@@ -20,6 +20,20 @@ swap() {
   mv "$1" "$tmpfile" && mv "$2" "$1" &&  mv "$tmpfile" "$2"
 }
 
+up() {
+  if [ "$1" -eq "$1" ] 2> /dev/null ; then
+    x=0
+    dir=""
+    while [ $x -lt "${1:-1}" ]; do
+      dir=${dir}../
+      x=$((x+1))
+    done
+    cd "$dir" || exit "unable to cd"
+  else
+    print "Usage: up <integer>"
+  fi
+}
+
 # defines an alias if it does not already exist
 define_alias_ifndef() {
 #! type $1  > /dev/null 2>&1 && alias $1="$2"
