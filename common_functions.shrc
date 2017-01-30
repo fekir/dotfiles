@@ -7,8 +7,17 @@ source_opt_file() {
   fi
 }
 
-source_bashrc() {
-  . "$HOME/.bashrc"
+swap() {
+  if [ -z "${1+x}" ] || [ -z "${2+x}" ]; then
+    printf 'one or more variables not defined. Usage: swap "file1" "file2"\n';
+    return 1;
+  fi
+  if [ "$1" = "$2" ];then
+    # FIXME: verify file exists
+    return 0
+  fi
+  tmpfile=$(mktemp --dry-run "$(dirname "$1")/XXXXXX")
+  mv "$1" "$tmpfile" && mv "$2" "$1" &&  mv "$tmpfile" "$2"
 }
 
 # defines an alias if it does not already exist
