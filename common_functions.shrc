@@ -101,7 +101,14 @@ repair_dir_perm() {
 #FIXME: if directory matches pattern -> "error"
 # try to apply: https://stackoverflow.com/questions/11456403/stop-shell-wildcard-character-expansion
 find_in_file(){
-  find . -name "$1" -exec grep --with-filename --color -n "$2" {} \;
+  if [ -z "$2" ]; then
+    NAME="*"
+    CONTENT="$1"
+  else
+    NAME="$1"
+    CONTENT="$2"
+  fi
+  find . -name "$NAME" -exec grep --with-filename --color -n --directories skip "$CONTENT" {} \;
 }
 #alias find_in_file='set -f;find_in_file;' # removes globbing completely, not just for this command!
 
