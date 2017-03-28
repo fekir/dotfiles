@@ -112,4 +112,29 @@ find_in_file(){
 }
 #alias find_in_file='set -f;find_in_file;' # removes globbing completely, not just for this command!
 
+print_color_support() {
+  printf '\n'
+  i=0
+  while [ $((i+=1)) -le 255 ]
+  do
+    printf "\x1b[38;5;${i}m%03d " ${i}
+  done
+  printf '\n\n'
 
+  printf 'COLORTERM: %s\n' "$COLORTERM"
+  printf 'TERM:      %s\n' "$TERM"
+#https://gist.github.com/XVilka/8346728
+awk 'BEGIN{
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+    for (colnum = 0; colnum<77; colnum++) {
+        r = 255-(colnum*255/76);
+        g = (colnum*510/76);
+        b = (colnum*255/76);
+        if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum+1,1);
+    }
+    printf "\n";
+}'
+}
