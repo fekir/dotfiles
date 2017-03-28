@@ -138,3 +138,18 @@ awk 'BEGIN{
     printf "\n";
 }'
 }
+
+# removes unwanted characters (like — instead of -) from text file, and rtrim every line 
+clean_txt_file() {
+  # replace — with -, ’ with ', “ and ” with ", non ascii whitespace with ascii whitespace, • with *
+  sed -i -e 's/—/-/g' "$1" -e "s/’/'/g" "$1" -e 's/“/\"/g' "$1" -e 's/”/\"/g' "$1" -e "s/ / /g" "$1" -e 's/•/*/g' "$1"
+
+#  LANG=C sed -i 's/[\d128-\d255]//g' "$1"
+  perl -i -pe 's/[^[:ascii:]]//g;' "$1"
+  sed -i 's/[^[:print:]]//' "$1"
+  # should be same as sed -i 's/[^a-zA-Z 0-9`~!@#$%^&*()_+\[\]\\{}|;'\'':",.\/<>?]//g' "$1"
+  # rtrim every line
+  #sed -i 's/\s*$//' "$1"
+  sed -i  's/[[:space:]]*$//' "$1"
+}
+
