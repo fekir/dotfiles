@@ -22,8 +22,13 @@ fi
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
+bindkey "${terminfo[kdch1]}" delete-char
+bindkey "${terminfo[kich1]}" overwrite-mode
+
+bindkey "${terminfo[home]}"  beginning-of-line
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey "^[[F" end-of-line
 
 CURRENTDIR=${0:h}
 
@@ -44,3 +49,4 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
 
+zstyle ':completion:*' special-dirs true
