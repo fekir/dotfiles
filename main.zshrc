@@ -19,6 +19,9 @@ elif figlet "test" > /dev/null 2>&1 ; then
   figlet "Welcome!"
 fi
 
+# separator for forward/backward-word
+export WORDCHARS='[]=/(){}'
+
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
@@ -44,7 +47,7 @@ source_opt_file "$CURRENTDIR/dev.shrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
 
 sysname=$(uname -s)
-if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
+if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then
   source_opt_file "$CURRENTDIR/windows.bashrc"
 fi
 
@@ -55,3 +58,4 @@ autoload -Uz compinit
 compinit
 
 zstyle ':completion:*' special-dirs true
+
