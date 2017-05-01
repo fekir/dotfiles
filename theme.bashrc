@@ -41,6 +41,27 @@ readonly bakpur='\[\e[45m\]'   # Viola
 readonly bakcyn='\[\e[46m\]'   # Ciano
 readonly bakwht='\[\e[47m\]'   # Bianco
 
+# otherwise tmux seems to have problems
+if [ "$TERM" = "xterm" ]
+then
+  if [ "$COLORTERM" = "truecolor" ]
+  then
+    export TERM=xterm-256color
+  fi
+fi
+
+
+
+theme_powerline() {
+  local file="/usr/share/powerline/bindings/bash/powerline.sh"
+  if [ -f "$file" ]; then
+    export POWERLINE_BASH_CONTINUATION=1
+    export POWERLINE_BASH_SELECT=1
+    . "$file"
+    return 0
+  fi
+  return 1
+}
 
 # modified from
 # https://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors
@@ -82,4 +103,8 @@ theme_time_cvs(){
 }
 
 # load theme
-theme_time_cvs
+if theme_powerline; then
+  :
+else
+  theme_time_cvs
+fi
