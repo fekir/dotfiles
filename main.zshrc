@@ -42,7 +42,12 @@ source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/temp.shrc"
 source_opt_file "$CURRENTDIR/dev.shrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
-source_opt_file "$CURRENTDIR/windows.bashrc"
+
+sysname=$(uname -s)
+if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
+  source_opt_file "$CURRENTDIR/windows.bashrc"
+fi
+
 
 # completion coloured like ls
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
