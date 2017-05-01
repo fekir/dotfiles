@@ -22,8 +22,11 @@ fi
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 
-CURRENTDIR=${0:a:h}
+CURRENTDIR=${0:h}
+
 # not optional, defines source_opt_file
 . "$CURRENTDIR/common_functions.shrc"
 
@@ -34,6 +37,7 @@ source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/temp.shrc"
 source_opt_file "$CURRENTDIR/dev.shrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
+source_opt_file "$CURRENTDIR/windows.bashrc"
 
 # completion coloured like ls
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
