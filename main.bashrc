@@ -41,6 +41,6 @@ source_opt_file "$CURRENTDIR/theme.bashrc"
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
-  source_opt_file "$CURRENTDIR/windows.bashrc"
+  source_opt_file "$CURRENTDIR/windows.shrc"
 fi
 
