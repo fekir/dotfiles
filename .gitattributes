@@ -1,2 +1,3 @@
 *.bashrc text eol=lf
 *.shrc   text eol=lf
+*.zshrc  text eol=lf
