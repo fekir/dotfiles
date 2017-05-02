@@ -81,8 +81,6 @@ theme_time_cvs(){
   local cur_time="$txtblu\t"
 
   local git_branch='$(LANG=en git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /)'
-  local git_dirty;
-  git_dirty="$(LANG=en git rev-parse 2>/dev/null && (git diff --no-ext-diff --quiet --exit-code 2> /dev/null || printf "* "))"
 
   local prompt_tail="$txtylw\\$ "
 

@@ -21,7 +21,7 @@ theme_powerline() {
 theme_time_git(){
 
   local user="%F{green}%n"
-  local cur_location="%F{blue}%50<...<%~%<<" # truncates after 50 character with ..., and replace home wih ~
+  local cur_location="%B%F{blue}%50<...<%~%<<%b" # truncates after 50 character with ..., and replace home wih ~
   local cur_time="%F{blue}%*"
 
   local prompt_tail="%F{yellow}%# "
