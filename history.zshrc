@@ -11,3 +11,7 @@ setopt hist_ignore_dups # ignore duplication command history list
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
+
+HISTFILE=~/.zhistfile
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
