@@ -19,9 +19,9 @@ elif figlet "test" > /dev/null 2>&1 ; then
   figlet "Welcome!"
 fi
 
-# separator for forward/backward-word
-export WORDCHARS='[]=/(){}'
 
+autoload -U select-word-style
+select-word-style bash
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
@@ -51,11 +51,17 @@ if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then
   source_opt_file "$CURRENTDIR/windows.shrc"
 fi
 
-
-# completion coloured like ls
+# zsh settings
+#  completion
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' completer _complete _ignored _approximate
 autoload -Uz compinit
 compinit
 
-zstyle ':completion:*' special-dirs true
 
+unsetopt autocd
+unsetopt beep
+
+setopt extendedglob
+setopt nomatch
