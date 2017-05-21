@@ -42,15 +42,18 @@ readonly bakcyn='\[\e[46m\]'   # Ciano
 readonly bakwht='\[\e[47m\]'   # Bianco
 
 # otherwise tmux seems to have problems
-if [ "$TERM" = "xterm" ]
+if [ "$COLORTERM" = "truecolor" ]
 then
-  if [ "$COLORTERM" = "truecolor" ]
+  if [ "$TERM" = "xterm" ]
   then
     export TERM=xterm-256color
   fi
+
+  if [ "$TERM" = "screen" ]
+  then
+    export TERM=screen-256color
+  fi
 fi
-
-
 
 theme_powerline() {
   local file="/usr/share/powerline/bindings/bash/powerline.sh"

@@ -1,10 +1,15 @@
 #!/usr/bin/env zsh
 
-if [ "$TERM" = "xterm" ]
+if [ "$COLORTERM" = "truecolor" ]
 then
-  if [ "$COLORTERM" = "truecolor" ]
+  if [ "$TERM" = "xterm" ]
   then
     export TERM=xterm-256color
+  fi
+
+  if [ "$TERM" = "screen" ]
+  then
+    export TERM=screen-256color
   fi
 fi
 
