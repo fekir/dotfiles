@@ -9,16 +9,12 @@ case $- in
 esac
 
 # Fortune message
-if cowsay "test" > /dev/null 2>&1 ; then
-  message="Welcome"
-  if fortune > /dev/null 2>&1 ; then
-    message=$(fortune -s)
-  fi
-  cowsay -f duck -- "$message"
-elif figlet "test" > /dev/null 2>&1 ; then
-  figlet "Welcome!"
+if [[ "$TERM" = screen* ]]; then
+  :
+else
+  message=$(fortune -s 2>/dev/null || echo "Welcome")
+  cowsay -f duck -- "$message" 2>/dev/null;
 fi
-
 
 autoload -U select-word-style
 select-word-style bash
