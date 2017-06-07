@@ -61,3 +61,7 @@ unsetopt beep
 
 setopt extendedglob
 setopt nomatch
+
+# disable ctrl+s
+stty -ixon
+

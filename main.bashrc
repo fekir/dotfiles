@@ -44,3 +44,5 @@ if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
   source_opt_file "$CURRENTDIR/windows.shrc"
 fi
 
+# disable ctrl+s
+stty -ixon
