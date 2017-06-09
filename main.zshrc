@@ -9,7 +9,7 @@ case $- in
 esac
 
 # Fortune message
-if [[ "$TERM" = screen* ]] || [ "$DISABLE_THEME" = "true" ]; ; then
+if [[ "$TERM" = screen* ]] || [ "$THEME_MINIMAL" = "true" ]; ; then
   :
 else
   message=$(fortune -s 2>/dev/null || echo "Welcome")

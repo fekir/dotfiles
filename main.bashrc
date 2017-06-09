@@ -9,7 +9,7 @@ case $- in
 esac
 
 # Fortune message, avoid in scree/tmux since we will already have seen the first one
-if [[ "$TERM" = screen* ]]  || [ "$DISABLE_THEME" = "true" ]; then
+if [[ "$TERM" = screen* ]]  || [ "$THEME_MINIMAL" = "true" ]; then
   :
 else
   message=$(fortune -s 2>/dev/null || echo "Welcome")

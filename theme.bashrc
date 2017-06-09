@@ -41,19 +41,18 @@ readonly bakpur='\[\e[45m\]'   # Viola
 readonly bakcyn='\[\e[46m\]'   # Ciano
 readonly bakwht='\[\e[47m\]'   # Bianco
 
-# otherwise tmux seems to have problems
-if [ "$COLORTERM" = "truecolor" ]
-then
-  if [ "$TERM" = "xterm" ]
-  then
-    export TERM=xterm-256color
-  fi
-
-  if [ "$TERM" = "screen" ]
-  then
-    export TERM=screen-256color
-  fi
-fi
+theme_minimal(){
+  unset PROMPT_COMMAND
+  PS1="$txtylw\\\$$txtrst "
+  PS2=" $txtblu>$txtrst "
+  local locpur=$'\e[1;35m'
+  local loccyano=$'\e[1;36m'
+  local locreset=$'\e[m'
+  PS3=" ${locpur}?${locreset} "
+  PS4=" ${loccyano}+${locreset} "
+  THEME_MINIMAL='true'
+  export THEME_MINIMAL
+}
 
 theme_powerline() {
   local file="/usr/share/powerline/bindings/bash/powerline.sh"
@@ -61,6 +60,7 @@ theme_powerline() {
     export POWERLINE_BASH_CONTINUATION=1
     export POWERLINE_BASH_SELECT=1
     . "$file"
+    unset THEME_MINIMAL
     return 0
   fi
   return 1
@@ -101,11 +101,14 @@ theme_time_cvs(){
 
     PS1="${debian_chroot:+($debian_chroot)}$user $cur_location $cur_time $repo_color$git_branch$git_dirty$svn_stat$prompt_tail$txtrst"
   fi
+  unset THEME_MINIMAL
 }
 
 # load theme
-if theme_powerline; then
-  :
+if [ "$THEME_MINIMAL" = "true" ]; then
+  theme_minimal
+elif theme_powerline; then
+ :
 else
   theme_time_cvs
 fi

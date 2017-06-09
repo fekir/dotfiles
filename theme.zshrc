@@ -1,22 +1,22 @@
 #!/usr/bin/env zsh
 
-if [ "$COLORTERM" = "truecolor" ]
-then
-  if [ "$TERM" = "xterm" ]
-  then
-    export TERM=xterm-256color
-  fi
-
-  if [ "$TERM" = "screen" ]
-  then
-    export TERM=screen-256color
-  fi
-fi
+theme_minimal(){
+  unset PROMPT
+  unset PROMPT_COMMAND
+  RPROMPT=''
+  PS1='%(!.%F{red}#.%F{yellow}$)%f '
+  PS2=' %F{blue}>%f '
+  PS3=' %F{purple}?%f '
+  PS4=' + '
+  THEME_MINIMAL='true'
+  export THEME_MINIMAL
+}
 
 theme_powerline() {
   local file="/usr/share/powerline/bindings/zsh/powerline.zsh"
   if [ -f "$file" ]; then
     . "$file"
+    unset THEME_MINIMAL
     return 0
   fi
   return 1
@@ -35,11 +35,14 @@ theme_time_git(){
 
   PROMPT="$user $cur_location $cur_time $prompt_tail$last_color"
   RPROMPT="$check_previous_ret$git$svn_stat$last_color"
+  unset THEME_MINIMAL
 }
 
-if theme_powerline; then
+# load theme
+if [ "$THEME_MINIMAL" = "true" ]; then
+  theme_minimal
+elif theme_powerline; then
   :
 else
   theme_time_git
 fi
-
