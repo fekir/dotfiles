@@ -67,3 +67,5 @@ setopt nomatch
 # disable ctrl+s
 stty -ixon
 
+# write ^C when pressing ctrl+c, like bash
+TRAPINT() { print -P -n -- '%F{red}\^C%f';return 130;}
