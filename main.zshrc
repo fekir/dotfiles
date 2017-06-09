@@ -9,7 +9,7 @@ case $- in
 esac
 
 # Fortune message
-if [[ "$TERM" = screen* ]]; then
+if [[ "$TERM" = screen* ]] || [ "$DISABLE_THEME" = "true" ]; ; then
   :
 else
   message=$(fortune -s 2>/dev/null || echo "Welcome")
@@ -33,6 +33,8 @@ CURRENTDIR=${0:h}
 
 # not optional, defines source_opt_file
 . "$CURRENTDIR/common_functions.shrc"
+
+detect_term
 
 # optionals
 source_opt_file "$CURRENTDIR/xdg_paths.bashrc"

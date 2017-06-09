@@ -8,12 +8,12 @@ case $- in
       *) return;;
 esac
 
-# Fortune message
-if [[ "$TERM" = screen* ]]; then                                                                                                                                                                                  
-  :                                                                                                                                                                                                               
-else                                                                                                                                                                                                              
-  message=$(fortune -s 2>/dev/null || echo "Welcome")                                                                                                                                                             
-  cowsay -f duck -- "$message" 2>/dev/null;                                                                                                                                                                       
+# Fortune message, avoid in scree/tmux since we will already have seen the first one
+if [[ "$TERM" = screen* ]]  || [ "$DISABLE_THEME" = "true" ]; then
+  :
+else
+  message=$(fortune -s 2>/dev/null || echo "Welcome")
+  cowsay -f duck -- "$message" 2>/dev/null;
 fi
 
 
@@ -29,6 +29,8 @@ CURRENTDIR=$(dirname "${BASH_SOURCE[0]}")
 
 # not optional, defines source_opt_file
 . "$CURRENTDIR/common_functions.shrc"
+
+detect_term
 
 # optionals
 source_opt_file "$CURRENTDIR/strict_bash.bashrc"
