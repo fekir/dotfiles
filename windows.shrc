@@ -45,3 +45,13 @@ fi
 append_program_dir_to_path "WiX Toolset v3.10/bin"
 
 alias ls="ls --color=auto --append-exe"
+
+explorer() {
+  # explorer.exe return 1 in case of "success"
+  if [ -z "${1+x}" ]; then
+    dirpath="." 
+  else
+    dirpath="$(cygpath -w "${1}")"
+  fi
+  explorer.exe "$dirpath" || [ $? -eq 1 ]
+}
