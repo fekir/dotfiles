@@ -1,19 +1,19 @@
 #!/bin/sh
 
-prog_files=$(cygpath "$PROGRAMFILES")/
-# since you cannot have ( or ) in a variable name, we are guessing the correct path...
+prog_files="$(cygpath "$PROGRAMFILES")/"
+# since you cannot have '(' or ')' in a variable name, we are guessing the correct path based on $PROGRAMFILES...
 if [ -d "$PROGRAMFILES (x86)" ]; then
-  prog_files_6432=$(cygpath "$PROGRAMFILES (x86)")/;
+  prog_files_6432="$(cygpath "$PROGRAMFILES (x86)")/";
 fi
 
 # similar to append_to_path, but more convenient if a program may be 32 or 64 bit
 append_program_dir_to_path(){
-  if append_to_path "$prog_files""$1"; then
+  if append_to_path "$prog_files$1"; then
     return 0;
   fi
-  # in case we have 64 bit windows and 32 bit program
-  if [ -v prog_files_6432 ]; then
-    if append_to_path "$prog_files_6432""$1"; then
+  # in case we have 64 bit windows and 32 bit installation directory
+  if [ -n "${prog_files_6432+x}" ]; then
+    if append_to_path "$prog_files_6432$1"; then
       return 0;
     fi
   fi
@@ -34,15 +34,18 @@ load_vs() {
   fi
 }
 
-
-if [ -f "$prog_files""Notepad++/notepad++.exe" ]; then
-    define_alias_ifndef "npp" '"$prog_files""Notepad++/notepad++.exe"'
-elif [ -f "$prog_files_6432""Notepad++/notepad++.exe" ]; then
-    define_alias_ifndef "npp" '"$prog_files_6432""Notepad++/notepad++.exe"'
+append_program_dir_to_path "CMake/bin"
+if append_program_dir_to_path "Meld"; then
+  define_alias_ifndef meld Meld.exe
 fi
-
-
-append_program_dir_to_path "WiX Toolset v3.10/bin"
+append_program_dir_to_path "Mozilla Firefox"
+append_program_dir_to_path "Mozilla Thunderbird"
+if append_program_dir_to_path "Notepad++"; then
+  define_alias_ifndef npp 'notepad++.exe'
+fi
+if append_program_dir_to_path "WinMerge"; then
+  define_alias_ifndef winmerge WinMergeU.exe
+fi
 
 alias ls="ls --color=auto --append-exe"
 
