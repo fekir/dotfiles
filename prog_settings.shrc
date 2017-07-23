@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if command -v 'lynx' > /dev/null 2>&1; then
+  if [ -f "$HOME/.config/lynx/lynx.cfg" ]; then
+    LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
+    export LYNX_CFG
+  else
+    WWW_HOME='https://duckduckgo.com/lite'
+    export WWW_HOME
+  fi
+  define_alias_ifndef 'lynx' 'lynx -useragent="lynx"'
+  lynx_search(){
+    #IFS='%20' -> does not work, when workaround found, use appropriate scope
+    lynx -useragent='lynx' "https://duckduckgo.com/lite/?q=$*"
+  }
+fi
+
