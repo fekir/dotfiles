@@ -1,20 +1,16 @@
 = shell
 
-This repository contains configuration files for the (bash) shell.
+This repository contains configuration files for the bash and zsh shell, and possibly other programs
 
 
 == Installation
 
 In your linux system, clone the repository inside your .config folder
 ----
-git clone https://github.com/fekir/shell.git "$HOME/.config/shell/"
-----
-on windows (for example with Cygwin) you can clone it under "AppData/Roaming/shell":
-----
-git clone https://github.com/fekir/shell.git "$HOME/AppData/Roaming/shell/"
+git clone https://github.com/fekir/dotfiles.git "$HOME/.config/"
 ----
 
-Then add following line to your current .bashrc
+Then add following line to your current .bashrc (similar setup is needed for zsh too)
 
 ----
 # include main.bashrc if it exists
