@@ -1,0 +1,34 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+
+	a = add
+	d = diff --ignore-all-space
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+	pushfl = push --force-with-lease
+
+[push]
+	default = simple
+
+[pull]
+	rebase = preserve
+
+[merge]
+	tool = meld
+
+[rebase]
+	autostash = true
+
+[credential]
+	helper = cache
+
+[color]
+	ui = true
+
+[help]
+	autocorrect = 30
+
+[include]
+	path = config.local
