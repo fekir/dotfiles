@@ -14,6 +14,8 @@ define_alias_ifndef 'll.' 'ls -lhAd .* --color=auto'
 define_alias_ifndef 'l' 'ls --color=auto'
 define_alias_ifndef 'lsd' 'ls --group-directories-first --color=auto'
 
+define_alias_ifndef 'e' 'editor' 'editor'
+
 # wget
 alias wget='wget -c'
 
