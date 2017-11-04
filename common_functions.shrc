@@ -13,7 +13,7 @@ source_bashrc() {
 
 # defines an alias if it does not already exist
 define_alias_ifndef() {
-#! type $1 &>/dev/null && alias $1="$2"
+#! type $1  > /dev/null 2>&1 && alias $1="$2"
 # othervise (more verbose):
   if ! command -v "$1"  > /dev/null 2>&1; then
     alias "$1"="$2";
@@ -30,7 +30,7 @@ define_alias_opt() {
 # remove all duplicates from path
 # FIXME: on windows we should be case insensitive and normalize (windows/unix path) all paths
 # since : is present on windows as path separator, we have a problem...
-function rem_dup_from_path(){
+rem_dup_from_path(){
   if [ -n "$PATH" ]; then
     old_PATH=$PATH:;
     while [ -n "$old_PATH" ]; do
