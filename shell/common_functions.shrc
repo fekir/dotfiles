@@ -35,15 +35,23 @@ up() {
 }
 
 # defines an alias if it does not already exist
+# usage:
+# define_alias_ifndef <alias_name> <command_to_alias> <optional_command_to_test>
+# define_alias_ifndef 'll' 'ls -l' 'ls'
 define_alias_ifndef() {
-#! type $1  > /dev/null 2>&1 && alias $1="$2"
-# othervise (more verbose):
-  if ! command -v "$1"  > /dev/null 2>&1; then
-    alias "$1"="$2";
+  if ! command -v "$1" > /dev/null 2>&1; then
+    if [ -z "${3+x}" ] || command -v "$3" > /dev/null 2>&1; then
+      alias "$1"="$2";
+    fi
   fi
 }
 
-#like normal alias, but checks if the required program is avaiable
+# like normal alias, but checks if the required program is avaiable
+# usage:
+#  define_alias_opt <command_to_test> <alias_name> <command_to_alias>
+#  define_alias_opt 'ls' 'll' 'ls -l'
+#
+# should probably prefer define_alias_ifndef
 define_alias_opt() {
   if command -v "$1" > /dev/null 2>&1; then
     alias "$2"="$3";
