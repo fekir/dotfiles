@@ -175,3 +175,6 @@ detect_term() {
   fi
 }
 
+ssht() {
+  ssh -t "$@" "tmux new-session -A -s ssh_session";
+}
