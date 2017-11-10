@@ -34,7 +34,6 @@ detect_term
 
 # optionals
 source_opt_file "$CURRENTDIR/strict_bash.bashrc"
-source_opt_file "$CURRENTDIR/xdg_paths.bashrc"
 source_opt_file "$CURRENTDIR/history.bashrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"

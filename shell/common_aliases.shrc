@@ -1,11 +1,6 @@
 #!/bin/sh
 
 # ls
-eval "$(dircolors)"
-# colors for source files
-src_file_color="01;33"
-LS_COLORS="$LS_COLORS*.cpp=$src_file_color:*.hpp=$src_file_color:*.cxx=$src_file_color:*.hxx=$src_file_color:*.c=$src_file_color:*.h=$src_file_color:*.cmake=$src_file_color:" # c, c++
-LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
 alias ls='ls --color=auto'
 define_alias_ifndef 'll' 'ls -lh --color=auto'
 define_alias_ifndef 'la' 'ls -A --color=auto'
@@ -30,13 +25,6 @@ define_alias_opt 'nano' 'nano' 'nano -c'
 define_alias_opt 'gp' 'gp' 'gp -q'
 
 define_alias_opt 'xlsclients' 'show_daemons' 'ps -C "$(xlsclients | cut -d\  -f3 | paste - -s -d \",\")" --ppid 2 --pid 2 --deselect -o tty,uid,pid,ppid,args'
-
-# make
-# invoke make with -j"numberofoprocs", you can override it by using -j
-export MAKEFLAGS="-j$(($(grep -c processor /proc/cpuinfo)+1))"
-
-# gcc
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 ############################################
 # new_alias                                #

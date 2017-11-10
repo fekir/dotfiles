@@ -57,7 +57,6 @@ stty -ixon
 TRAPINT() { print -P -n -- '%F{red}\^C%f';return 130;}
 
 # optionals
-source_opt_file "$CURRENTDIR/xdg_paths.bashrc"
 source_opt_file "$CURRENTDIR/history.zshrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"
