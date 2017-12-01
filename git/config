@@ -30,5 +30,8 @@
 [help]
 	autocorrect = 30
 
+[i18n]
+	commitEncoding = UTF-8
+
 [include]
 	path = config.local
