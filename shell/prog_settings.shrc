@@ -1,8 +1,13 @@
 #!/bin/sh
 
+# Set XDG paths to their default values if not already set
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
 if command -v 'lynx' > /dev/null 2>&1; then
-  if [ -f "$HOME/.config/lynx/lynx.cfg" ]; then
-    LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
+  if [ -f "$XDG_CONFIG_HOME/lynx/lynx.cfg" ]; then
+    LYNX_CFG="$XDG_CONFIG_HOME/lynx/lynx.cfg"
     export LYNX_CFG
   else
     WWW_HOME='https://duckduckgo.com/lite'
@@ -15,10 +20,25 @@ if command -v 'lynx' > /dev/null 2>&1; then
   }
 fi
 
-# Set XDG Paths to their default values if not already set
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+if command -v 'weechat' > /dev/null 2>&1; then
+  WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
+  export WEECHAT_HOME
+fi
+
+if command -v 'vagrant' > /dev/null 2>&1; then
+  VAGRANT_HOME="$XDG_CONFIG_HOME/vagrant"
+  export VAGRANT_HOME
+fi
+
+if command -v 'cargo' > /dev/null 2>&1; then
+  CARGO_HOME="$XDG_CACHE_HOME/cargo"
+  export CARGO_HOME
+fi
+
+if command -v 'wine' > /dev/null 2>&1; then
+  WINEPREFIX="$XDG_CONFIG_HOME/wine"
+  export WINEPREFIX
+fi
 
 # automatically invoke make with -j"numberofoprocs".
 # It can be overridden by using -j
@@ -33,3 +53,9 @@ eval "$(dircolors)"
 src_file_color="01;33"
 LS_COLORS="$LS_COLORS*.cpp=$src_file_color:*.hpp=$src_file_color:*.cxx=$src_file_color:*.hxx=$src_file_color:*.c=$src_file_color:*.h=$src_file_color:*.cmake=$src_file_color:" # c, c++
 LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
+
+# GUI programs
+if command -v 'gimp' > /dev/null 2>&1; then
+  GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
+  export GIMP2_DIRECTORY
+fi
