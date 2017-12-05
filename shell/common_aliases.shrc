@@ -24,6 +24,8 @@ define_alias_opt 'nano' 'nano' 'nano -c'
 # gp
 define_alias_opt 'gp' 'gp' 'gp -q'
 
+alias mkdir='mkdir -pv'
+
 define_alias_opt 'xlsclients' 'show_daemons' 'ps -C "$(xlsclients | cut -d\  -f3 | paste - -s -d \",\")" --ppid 2 --pid 2 --deselect -o tty,uid,pid,ppid,args'
 
 ############################################
