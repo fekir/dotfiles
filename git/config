@@ -8,6 +8,7 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 	pushfl = push --force-with-lease
+	start = !git init && git commit --allow-empty -m \"Initial commit\"
 
 [push]
 	default = simple
