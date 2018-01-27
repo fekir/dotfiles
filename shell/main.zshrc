@@ -42,7 +42,7 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' completer _complete _ignored _approximate
 autoload -Uz compinit
-compinit
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
 
 unsetopt autocd
 unsetopt beep
