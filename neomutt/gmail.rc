@@ -1,0 +1,33 @@
+
+########################################
+# define
+# set imap_user = "first.last"
+# set realname = "First Last"
+# optionally define
+# set imap_pass = "Password"
+
+set hostname = "gmail.com" # also used for creating the message-id (other clients use it so lets be consistent)
+
+set smtp_url = "smtp://$imap_user@smtp.$hostname:587/"
+set smtp_pass = $imap_pass
+set from = "$realname <$imap_user@$hostname>"
+set folder = "imaps://imap.$hostname:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash     = "+[Gmail]/Trash"
+
+# mailboxes are shown in the sidebar, imap_check_subscribed loads them all
+#mailboxes +INBOX +Sent
+set imap_check_subscribed
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set move = no # do not move messages to another folder
+unset record # Gmail automatically saves sent e-mail to +[Gmail]/Sent, so we do not want duplicates.
+
+
+# not gmail specific settings, but this is probably the best place where to put them
+set header_cache = ~/.cache/neomutt/$hostname/$imap_user/headers
+set message_cachedir = ~/.cache/neomutt/$hostname/$imap_user/bodies
+

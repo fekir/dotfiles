@@ -1,0 +1,15 @@
+# open editor instead of asking
+set editor="editor"
+set include = yes
+set edit_headers = yes
+set autoedit = yes
+
+set text_flowed = yes                          # nice view even with 72 char limit
+set assumed_charset="utf-8"
+set attach_charset="utf-8"
+set charset="utf-8"
+set config_charset="utf-8"
+set newsgroups_charset="utf-8"
+set send_charset="utf-8"
+
+set user_agent = no

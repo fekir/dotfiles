@@ -1,0 +1,34 @@
+auto_view text/html
+alternative_order text/plain text/enriched text/html     # prefer plain text
+auto_view text/x-vcard text/html text/enriched
+
+set menu_scroll = yes
+set menu_move_off = no
+set arrow_cursor = yes
+set mark_old = no
+
+set sort = threads
+set sort_aux = last-date-received
+set strict_threads = yes
+
+color index brightred     default ~F # flagged
+color index brightyellow  default ~T # ?
+color index brightgreen   default ~N # unread
+color index brightgreen   default ~N~F # unread
+color index brightblue    default ~D # deleted
+
+color  hdrdefault      green           black
+color  header          brightyellow    black    "^from:"
+color  header          brightyellow    black    "^subject:"
+color  quoted          brightgreen     black
+color  quoted1         brightblue      black
+color  signature       brightred       black
+color  indicator       brightyellow    black
+color  error           brightred       black
+color  status          brightwhite     black
+color  tree            brightmagenta   black
+color  tilde           brightmagenta   black
+# link, mail, ...
+color  body            brightyellow    black (((ht|f)tps?)|mailto):(//)?[^\ "\t]*|www\.[-a-z0-9.]+[^\ .,;\t>">]
+color  body            brightmagenta   black "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+color  attachment      brightmagenta   black
