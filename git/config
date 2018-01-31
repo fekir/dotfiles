@@ -23,6 +23,12 @@
 [rebase]
 	autostash = true
 
+[difftool]
+	prompt = false
+
+[mergetool]
+	prompt = false
+
 [credential]
 	helper = cache
 
