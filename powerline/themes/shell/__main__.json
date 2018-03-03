@@ -1,0 +1,9 @@
+{
+	"segment_data":{
+		"powerline.segments.shell.cwd":{
+			"args":{
+				"use_path_separator":true
+			}
+		}
+	}
+}

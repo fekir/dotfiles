@@ -4,42 +4,42 @@
 # colors, escaped in \[ \] or bash is confused about color position
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt_(Italiano)#Lista_di_colori_per_il_prompt_e_Bash
 # https://unix.stackexchange.com/questions/56072/why-does-this-ps1-value-cause-unexpected-behaviour
-readonly txtblk='\[\e[0;30m\]' # Nero - Regular
-readonly txtred='\[\e[0;31m\]' # Rosso
-readonly txtgrn='\[\e[0;32m\]' # Verde
-readonly txtylw='\[\e[0;33m\]' # Giallo
-readonly txtblu='\[\e[0;34m\]' # Blu
-readonly txtpur='\[\e[0;35m\]' # Viola
-readonly txtcyn='\[\e[0;36m\]' # Ciano
-readonly txtwht='\[\e[0;37m\]' # Bianco
-readonly txtrst='\[\e[0m\]'    # Text Reset
+txtblk='\[\e[0;30m\]' # Nero - Regular
+txtred='\[\e[0;31m\]' # Rosso
+txtgrn='\[\e[0;32m\]' # Verde
+txtylw='\[\e[0;33m\]' # Giallo
+txtblu='\[\e[0;34m\]' # Blu
+txtpur='\[\e[0;35m\]' # Viola
+txtcyn='\[\e[0;36m\]' # Ciano
+txtwht='\[\e[0;37m\]' # Bianco
+txtrst='\[\e[0m\]'    # Text Reset
 
-readonly bldblk='\[\e[1;30m\]' # Nero - Bold
-readonly bldred='\[\e[1;31m\]' # Rosso
-readonly bldgrn='\[\e[1;32m\]' # Verde
-readonly bldylw='\[\e[1;33m\]' # Giallo
-readonly bldblu='\[\e[1;34m\]' # Blu
-readonly bldpur='\[\e[1;35m\]' # Viola
-readonly bldcyn='\[\e[1;36m\]' # Ciano
-readonly bldwht='\[\e[1;37m\]' # Bianco
+bldblk='\[\e[1;30m\]' # Nero - Bold
+bldred='\[\e[1;31m\]' # Rosso
+bldgrn='\[\e[1;32m\]' # Verde
+bldylw='\[\e[1;33m\]' # Giallo
+bldblu='\[\e[1;34m\]' # Blu
+bldpur='\[\e[1;35m\]' # Viola
+bldcyn='\[\e[1;36m\]' # Ciano
+bldwht='\[\e[1;37m\]' # Bianco
 
-readonly unkblk='\[\e[4;30m\]' # Nero - Underline
-readonly undred='\[\e[4;31m\]' # Rosso
-readonly undgrn='\[\e[4;32m\]' # Verde
-readonly undylw='\[\e[4;33m\]' # Giallo
-readonly undblu='\[\e[4;34m\]' # Blu
-readonly undpur='\[\e[4;35m\]' # Viola
-readonly undcyn='\[\e[4;36m\]' # Ciano
-readonly undwht='\[\e[4;37m\]' # Bianco
+unkblk='\[\e[4;30m\]' # Nero - Underline
+undred='\[\e[4;31m\]' # Rosso
+undgrn='\[\e[4;32m\]' # Verde
+undylw='\[\e[4;33m\]' # Giallo
+undblu='\[\e[4;34m\]' # Blu
+undpur='\[\e[4;35m\]' # Viola
+undcyn='\[\e[4;36m\]' # Ciano
+undwht='\[\e[4;37m\]' # Bianco
 
-readonly bakblk='\[\e[40m\]'   # Nero - Background
-readonly bakred='\[\e[41m\]'   # Rosso
-readonly badgrn='\[\e[42m\]'   # Verde
-readonly bakylw='\[\e[43m\]'   # Giallo
-readonly bakblu='\[\e[44m\]'   # Blu
-readonly bakpur='\[\e[45m\]'   # Viola
-readonly bakcyn='\[\e[46m\]'   # Ciano
-readonly bakwht='\[\e[47m\]'   # Bianco
+bakblk='\[\e[40m\]'   # Nero - Background
+bakred='\[\e[41m\]'   # Rosso
+badgrn='\[\e[42m\]'   # Verde
+bakylw='\[\e[43m\]'   # Giallo
+bakblu='\[\e[44m\]'   # Blu
+bakpur='\[\e[45m\]'   # Viola
+bakcyn='\[\e[46m\]'   # Ciano
+bakwht='\[\e[47m\]'   # Bianco
 
 theme_minimal(){
   unset PROMPT_COMMAND

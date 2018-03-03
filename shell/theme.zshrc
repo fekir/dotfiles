@@ -12,6 +12,10 @@ theme_minimal(){
   export THEME_MINIMAL
 }
 
+theme_fix_mc(){
+  RPROMPT=''
+}
+
 theme_powerline() {
   local file="/usr/share/powerline/bindings/zsh/powerline.zsh"
   if [ -f "$file" ]; then
@@ -45,4 +49,8 @@ elif theme_powerline; then
   :
 else
   theme_time_git
+fi
+
+if [[ $+MC_SID = 1 ]] ; then
+  theme_fix_mc
 fi
