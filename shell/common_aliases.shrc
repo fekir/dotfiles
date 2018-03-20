@@ -11,6 +11,8 @@ define_alias_ifndef 'lsd' 'ls --group-directories-first --color=auto'
 
 define_alias_ifndef 'e' 'editor' 'editor'
 
+define_alias_ifndef 'tigref' 'git reflog --pretty=raw | tig --pretty=raw' 'tig'
+
 # wget
 alias wget='wget -c'
 

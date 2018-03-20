@@ -20,6 +20,10 @@
 [merge]
 	tool = meld
 
+[diff]
+	tool = meld
+	algorithm = patience
+
 [rebase]
 	autostash = true
 
@@ -28,6 +32,12 @@
 
 [mergetool]
 	prompt = false
+
+[submodule]
+	recurse = true
+
+[fetch]
+	recurseSubmodules = true
 
 [credential]
 	helper = cache
