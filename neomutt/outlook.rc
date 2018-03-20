@@ -1,0 +1,31 @@
+# define
+# set imap_user = "john.doe"
+# set realname  = "John Doe"
+# set hostname  = "outlook.com", "hotmail.com", et al.
+# optionally define
+# set imap_pass = "Password"
+
+set imap_user=$imap_user@$hostname  # otherwise login does not work
+
+set smtp_url = "smtp://$imap_user@smtp-mail.outlook.com:587/"
+set smtp_pass = $imap_pass
+set from = "$realname <$imap_user>"
+set folder = "imaps://imap-mail.outlook.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set trash     = "+Deleted"
+unset record  # Outlook et al. automatically saves sent e-mail to Sent, we do not want duplicates.
+
+# mailboxes are shown in the sidebar, imap_check_subscribed loads them all
+set imap_check_subscribed
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set move = no # do not move messages to another folder
+
+
+# not mail specific settings, but this is probably the best place where to put them
+set header_cache = ~/.cache/neomutt/headers/$hostname
+set message_cachedir = ~/.cache/neomutt/bodies
+

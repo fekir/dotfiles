@@ -1,0 +1,28 @@
+
+# use the rc files for creating quickly a profile, for example
+#
+# ----
+# set imap_user = "john.doe"
+# set realname  = "John Doe"
+#
+# source sidebar.rc
+# source edit.rc
+# source view.rc
+# source gmail.rc
+# ----
+#
+# or
+# ----
+# set imap_user = "john.doe"
+# set realname  = "John Doe"
+# set hostname  = "hotmail.com"
+#
+# source sidebar.rc
+# source edit.rc
+# source view.rc
+# source outlook.rc
+# ----
+#
+# You can also save those profiles in other files, and start neomutt like
+# neomutt -F myhotmailprofile.rc
+#

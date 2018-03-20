@@ -6,6 +6,7 @@ set menu_scroll = yes
 set menu_move_off = no
 set arrow_cursor = yes
 set mark_old = no
+set markers = no # don't put '+' at the beginning of wrapped lines
 
 set sort = threads
 set sort_aux = last-date-received
