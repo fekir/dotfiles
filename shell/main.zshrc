@@ -29,6 +29,12 @@ bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 bindkey "^[[F" end-of-line
 
+# Enable Ctrl+x,e like on bash
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 CURRENTDIR=${0:h}
 
 # not optional, defines source_opt_file
@@ -49,7 +55,7 @@ unsetopt beep
 
 setopt extendedglob
 setopt nomatch
-
+setopt interactivecomments
 # disable ctrl+s
 stty -ixon
 
@@ -69,3 +75,5 @@ sysname=$(uname -s)
 if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then
   source_opt_file "$CURRENTDIR/windows.shrc"
 fi
+
+source_opt_file '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
