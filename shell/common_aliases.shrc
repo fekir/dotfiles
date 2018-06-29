@@ -26,7 +26,7 @@ alias grep='grep --color=auto'
 define_alias_opt 'nano' 'nano' 'nano -c'
 
 # gp
-define_alias_opt 'gp' 'gp' 'gp -q'
+define_alias_opt 'gp' 'gp' "gp --quiet --default histfile=\"${XDG_CACHE_HOME:-$HOME/.cache}/gp_history\""
 
 alias mkdir='mkdir -pv'
 

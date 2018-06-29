@@ -5,7 +5,7 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
-if [ -z ${LYNX_CFG+x} ] &&  [ -f "$XDG_CONFIG_HOME/lynx/lynx.cfg" ]; then
+if [ -z ${LYNX_CFG+x} ] && [ -f "$XDG_CONFIG_HOME/lynx/lynx.cfg" ]; then
   LYNX_CFG="$XDG_CONFIG_HOME/lynx/lynx.cfg"
   export LYNX_CFG
 fi
@@ -21,6 +21,10 @@ lynx_search(){
   #IFS='%20' -> does not work
   lynx -useragent='lynx' "https://duckduckgo.com/lite/?q=$*"
 }
+
+GPRC="$XDG_CONFIG_HOME/gp/rc"
+export GPRC
+
 WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WEECHAT_HOME
 
@@ -43,6 +47,11 @@ export IDEA_PROPERTIES
 WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export WGETRC
 
+GNUPGHOME="$XDG_CONFIG_HOME/gnupg.local"
+export GNUPGHOME
+
+PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/passtore.local"
+export PASSWORD_STORE_DIR
 
 #LESSHISTFILE="$XDG_DATA_HOME/less/history"
 LESSHISTFILE=/dev/null
