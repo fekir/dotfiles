@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 theme_minimal(){
+  precmd () { }
   unset PROMPT
   unset PROMPT_COMMAND
   RPROMPT=''
@@ -28,6 +29,10 @@ theme_powerline() {
 
 #http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 theme_time_git(){
+  autoload -Uz vcs_info
+  zstyle ':vcs_info:*' enable git
+  setopt prompt_subst
+  precmd () { vcs_info }
 
   local user="%F{green}%n"
   local cur_location="%B%F{blue}%50<...<%~%<<%b" # truncates after 50 character with ..., and replace home wih ~
@@ -38,7 +43,7 @@ theme_time_git(){
   local check_previous_ret='%(?.%F{green}✓.%F{red}✗[%?])'
 
   PROMPT="$user $cur_location $cur_time $prompt_tail$last_color"
-  RPROMPT="$check_previous_ret$git$svn_stat$last_color"
+  RPROMPT="$check_previous_ret\$vcs_info_msg_0_$last_color"
   unset THEME_MINIMAL
 }
 
