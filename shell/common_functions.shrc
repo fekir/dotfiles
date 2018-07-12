@@ -168,9 +168,11 @@ detect_term() {
   if [ "$COLORTERM" = "truecolor" ]
   then
     if [ "$TERM" = "xterm" ]; then
-      export TERM=xterm-256color
+      TERM='xterm-256color'
+      export TERM
     elif [ "$TERM" = "screen" ]; then
-      export TERM=screen-256color
+      TERM='screen-256color'
+      export TERM
     fi
   fi
 }
