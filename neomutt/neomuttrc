@@ -1,9 +1,12 @@
-
 # use the rc files for creating quickly a profile, for example
 #
 # ----
 # set imap_user = "john.doe"
 # set realname  = "John Doe"
+# # instead of writing imap_pass as plaintext:
+# source 'gpg --decrypt /path/to/pass/gmail.gpg |'
+# # gmail.pgp is the encryption of "set imap_pass=<mypwd>"
+# # created with "gpg --output gmail.gpg --symmetric gmail.tmp"
 #
 # source sidebar.rc
 # source edit.rc
@@ -16,6 +19,10 @@
 # set imap_user = "john.doe"
 # set realname  = "John Doe"
 # set hostname  = "hotmail.com"
+# # instead of writing imap_pass as plaintext:
+# source 'gpg --decrypt /path/to/pass/outlook.gpg |'
+# # outlook.pgp is the encryption of "set imap_pass=<mypwd>"
+# # created with "gpg --output outlook.gpg --symmetric outlook.tmp"
 #
 # source sidebar.rc
 # source edit.rc
@@ -24,5 +31,5 @@
 # ----
 #
 # You can also save those profiles in other files, and start neomutt like
-# neomutt -F myhotmailprofile.rc
+# neomutt -F hotmail.profile.rc
 #
