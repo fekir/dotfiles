@@ -12,6 +12,7 @@ endif
 
 " Set line numbers
 :set number
+:set relativenumber
 
 " Enable mouse support
 :set mouse=a
@@ -25,3 +26,13 @@ endif
 ":set listchars=tab:\|_,eol:$,nbsp:~,trail:^,extends:>,precedes:<
 ":set showbreak=\\
 :set list
+
+" scroll up/down by screen line and not by logical line
+" does not work in edit mode
+:map <up> gk
+:map <down> gj
+
+
+" temp disable current search highlight (activates again when searching or pressing n)
+:nnoremap <return> :nohlsearch<return><return>
+:nnoremap <esc> :nohlsearch<return><esc>
