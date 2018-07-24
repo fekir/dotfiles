@@ -36,3 +36,13 @@ endif
 " temp disable current search highlight (activates again when searching or pressing n)
 :nnoremap <return> :nohlsearch<return><return>
 :nnoremap <esc> :nohlsearch<return><esc>
+
+" Spell settings
+:hi clear SpellBad
+:hi clear SpellCap
+:hi SpellBad cterm=undercurl,bold
+:hi SpellCap cterm=undercurl,bold
+" https://github.com/neovim/neovim/issues/7479
+":hi SpellCap cterm=undercurl ctermfg=red
+:set spelllang=en " FIXME: would be nice to autodetect languages
+:set spell " FIXME: makes little sense to enable it when opening binary file
