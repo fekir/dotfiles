@@ -28,21 +28,20 @@ theme_powerline() {
 }
 
 #http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-theme_time_git(){
+theme_git(){
   autoload -Uz vcs_info
   zstyle ':vcs_info:*' enable git
   setopt prompt_subst
   precmd () { vcs_info }
 
   local user="%F{green}%n"
-  local cur_location="%B%F{blue}%50<...<%~%<<%b" # truncates after 50 character with ..., and replace home wih ~
-  local cur_time="%F{blue}%*"
+  local cur_location="%B%F{blue}%50<...<%~%<<%b" # truncates after 50 character with ..., and replace home with ~
 
   local prompt_tail="%F{yellow}%# "
   local last_color="%f"
   local check_previous_ret='%(?.%F{green}✓.%F{red}✗[%?])'
 
-  PROMPT="$user $cur_location $cur_time $prompt_tail$last_color"
+  PROMPT="$user $cur_location $prompt_tail$last_color"
   RPROMPT="$check_previous_ret\$vcs_info_msg_0_$last_color"
   unset THEME_MINIMAL
 }
@@ -53,7 +52,7 @@ if [ "$THEME_MINIMAL" = "true" ]; then
 elif theme_powerline; then
   :
 else
-  theme_time_git
+  theme_git
 fi
 
 if [[ $+MC_SID = 1 ]] ; then

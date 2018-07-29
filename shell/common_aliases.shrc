@@ -18,9 +18,9 @@ define_alias_ifndef 'tigref' 'git reflog --pretty=raw | tig --pretty=raw' 'tig'
 # wget
 alias wget='wget -c'
 
-# grep
+# grep, on some platforms (like termux on android), does not support colors
 #export GREP_OPTIONS='--color=auto' # deprecated --> alternatives without using alias???
-alias grep='grep --color=auto'
+grep --color --help >/dev/null 2>/dev/null && alias grep='grep --color=auto'
 
 # nano, add "set linenumbers" in .nanorc for better line numbers support
 define_alias_opt 'nano' 'nano' 'nano -c'

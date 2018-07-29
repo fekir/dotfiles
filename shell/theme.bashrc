@@ -68,8 +68,7 @@ theme_powerline() {
 
 # modified from
 # https://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors
-# https://bneijt.nl/blog/post/add-a-timestamp-to-your-bash-prompt/
-theme_time_cvs(){
+theme_cvs(){
   local after_di="${LS_COLORS#*:di=0}"
   local dir_color="${after_di%%:*}m"
   local txtdircolor="\[\e[$dir_color\]"
@@ -77,13 +76,11 @@ theme_time_cvs(){
   #local user_and_host="$txtgrn\u@\h"
   local user="$txtgrn\u${SSH_CLIENT:+$txtcyn@(ssh:\h)}"
 
-  # trim, not based on lenght but number of subdirectories
+  # trim, not based on length but number of subdirectories
   PROMPT_DIRTRIM=3
   local cur_location="$txtdircolor\w"
 
-  local cur_time="$txtblu\t"
-
-  local git_branch='$(LANG=en git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /)'
+  local git_branch='$(LANG=en git branch 2> /dev/null | "grep" -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /)'
 
   local prompt_tail="$txtylw\\$ "
 
@@ -94,12 +91,12 @@ theme_time_cvs(){
     export GIT_PS1_SHOWUPSTREAM="auto"
     export GIT_PS1_SHOWCOLORHINTS=1
     . /usr/lib/git-core/git-sh-prompt
-    PROMPT_COMMAND="__git_ps1 '${debian_chroot:+($debian_chroot)}$user $cur_location $cur_time$txtrst' '$prompt_tail$txtrst' "
+    PROMPT_COMMAND="__git_ps1 '${debian_chroot:+($debian_chroot)}$user $cur_location $txtrst' '$prompt_tail$txtrst' "
   else
     local repo_color="$txtpur"
     local svn_stat='$(svn info 2>/dev/null | sed -ne '"'"'s#^URL: ##p'"'"' | egrep -o '"'"'[^/]+$'"'"')'
 
-    PS1="${debian_chroot:+($debian_chroot)}$user $cur_location $cur_time $repo_color$git_branch$git_dirty$svn_stat$prompt_tail$txtrst"
+    PS1="${debian_chroot:+($debian_chroot)}$user $cur_location $repo_color$git_branch$git_dirty$svn_stat$prompt_tail$txtrst"
   fi
   unset THEME_MINIMAL
 }
@@ -110,5 +107,5 @@ if [ "$THEME_MINIMAL" = "true" ]; then
 elif theme_powerline; then
  :
 else
-  theme_time_cvs
+  theme_cvs
 fi
