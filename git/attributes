@@ -1,0 +1,6 @@
+# Common formats crlf defined as line break
+*.vcf eol=crlf
+*.ics eol=crlf
+
+# File that needs crlf as line break to work
+*.bat eol=crlf

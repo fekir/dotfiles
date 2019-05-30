@@ -53,3 +53,6 @@
 
 [include]
 	path = config.local
+
+[remote]
+	prune = true
