@@ -49,6 +49,9 @@ fi
 
 alias ls="ls --color=auto --append-exe"
 
+# FIXME: create function, if -File used, use cygpath
+alias defender='/cygdrive/c/Program\ Files/Windows\ Defender/MpCmdRun.exe'
+
 explorer() {
   # explorer.exe return 1 in case of "success"
   if [ -z "${1+x}" ]; then

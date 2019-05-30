@@ -30,7 +30,7 @@ up() {
     done
     cd "$dir" || exit "unable to cd"
   else
-    print "Usage: up <integer>"
+    printf "Usage: up <integer>"
   fi
 }
 

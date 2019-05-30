@@ -37,9 +37,8 @@ source_opt_file "$CURRENTDIR/strict_bash.bashrc"
 source_opt_file "$CURRENTDIR/history.bashrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"
-source_opt_file "$CURRENTDIR/temp.shrc"
-source_opt_file "$CURRENTDIR/temp.bashrc"
-source_opt_file "$CURRENTDIR/dev.shrc"
+source_opt_file "$CURRENTDIR/shell.local/temp.shrc"
+source_opt_file "$CURRENTDIR/shell.local/temp.bashrc"
 source_opt_file "$CURRENTDIR/theme.bashrc"
 
 sysname=$(uname -s)

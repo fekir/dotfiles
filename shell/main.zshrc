@@ -66,9 +66,8 @@ TRAPINT() { print -P -n -- '%F{red}\^C%f';return 130;}
 source_opt_file "$CURRENTDIR/history.zshrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"
-source_opt_file "$CURRENTDIR/temp.shrc"
-source_opt_file "$CURRENTDIR/temp.zshrc"
-source_opt_file "$CURRENTDIR/dev.shrc"
+source_opt_file "$CURRENTDIR/shell.local/temp.shrc"
+source_opt_file "$CURRENTDIR/shell.local/temp.zshrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
 
 sysname=$(uname -s)
