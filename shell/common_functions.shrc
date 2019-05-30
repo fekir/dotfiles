@@ -147,18 +147,31 @@ awk 'BEGIN{
 }'
 }
 
-# removes unwanted characters (like — instead of -) from text file, and rtrim every line 
+# replaces characters (like — instead of -) from text file, and rtrim every line
 clean_txt_file() {
   # replace — with -, ’ with ', “ and ” with ", non ascii whitespace with ascii whitespace, • with *
-  sed -i -e 's/—/-/g' "$1" -e "s/’/'/g" "$1" -e 's/“/\"/g' "$1" -e 's/”/\"/g' "$1" -e "s/ / /g" "$1" -e 's/•/*/g' "$1"
+  sed -i -e 's/—/-/g' "$1" -e 's/–/-/g' "$1" \
+         -e "s/’/'/g" "$1" -e 's/“/\"/g' "$1" -e 's/”/\"/g' "$1" \
+         -e "s/ / /g" "$1" \
+         -e 's/•/*/g' "$1" \
+         -e 's/[[:space:]]*$//' "$1" \
+	 ;
+}
 
-#  LANG=C sed -i 's/[\d128-\d255]//g' "$1"
-  perl -i -pe 's/[^[:ascii:]]//g;' "$1"
-  sed -i 's/[^[:print:]]//' "$1"
-  # should be same as sed -i 's/[^a-zA-Z 0-9`~!@#$%^&*()_+\[\]\\{}|;'\'':",.\/<>?]//g' "$1"
-  # rtrim every line
-  #sed -i 's/\s*$//' "$1"
-  sed -i  's/[[:space:]]*$//' "$1"
+to_ascii_file(){
+  clean_txt_file "$1"
+
+  sed -i -e 's/ü/ue/g' "$1" -e 's/ä/ae/g' "$1" -e 's/ö/oe/g' "$1" \
+         -e 's/Ü/UE/g' "$1" -e 's/Ä/AE/g' "$1" -e 's/Ö/OE/g' "$1" \
+         -e 's/ß/ss/g' "$1" -e 's/ẞ/SS/g' "$1" \
+         -e 's/è/e/g' "$1" -e 's/È/E/g' "$1"  -e 's/é/e/g' "$1" -e 's/É/E/g' "$1" \
+         -e 's/à/a/g' "$1" -e 's/À/A/g' "$1" \
+         -e 's/ì/i/g' "$1" -e 's/Ì/I/g' "$1" \
+         -e 's/ò/o/g' "$1" -e 's/Ò/O/g' "$1" \
+         -e 's/ù/u/g' "$1" -e 's/Ù/U/g' "$1" \
+         -e 's/[^[:print:]]//' "$1" \
+  ;
+  #  perl -i -pe 's/[^[:ascii:]]//g;' "$1"; # enable later, there might be other interesting characters to replace
 }
 
 
@@ -179,4 +192,29 @@ detect_term() {
 
 ssht() {
   ssh -t "$@" "tmux new-session -A -s ssh_session";
+}
+
+tmux_leave_session_for(){
+  MYENV="$1"; # FIXME -- check if defined
+
+  tmux has-session -t "$MYENV" || return 1;
+
+  if [ -z "${TMUX+x}" ]; then
+    tmux attach -t "$MYENV";
+    return $?;
+  fi
+
+  CURRENV=$(tmux display-message -p '#S')
+  if [ "$CURRENV" = "$MYENV" ]; then
+    return 0;
+  fi
+
+  tmux switch -t "$MYENV" || return 2;
+  # kill previous session if empty
+  NUMWIN=$(tmux list-window -t "$CURRENV" | wc -l)
+  NUMPANES=$(tmux list-panes -t "$CURRENV" | wc -l)
+  if [ "$NUMWIN" -eq "1" ] && [ "$NUMPANES" -eq "1" ]; then
+    tmux kill-session -t "$CURRENV";
+  fi
+  return 0;
 }

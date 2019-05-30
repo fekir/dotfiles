@@ -13,7 +13,7 @@ WWW_HOME='https://duckduckgo.com/lite/'
 export WWW_HOME
 if [ -z ${LYNX_SAVE_SPACE+x} ]; then
 #    LYNX_CFG_PATH
-  LYNX_SAVE_SPACE="$(xdg-user-dir DOWNLOAD 2>/dev/null || print "$HOME")"
+  LYNX_SAVE_SPACE="$(xdg-user-dir DOWNLOAD 2>/dev/null || printf "$HOME")"
   export LYNX_SAVE_SPACE
 fi
 alias lynx='lynx -useragent="lynx"'
@@ -36,9 +36,6 @@ export PACKER_CACHE_DIR
 
 CARGO_HOME="$XDG_CACHE_HOME/cargo"
 export CARGO_HOME
-
-WINEPREFIX="$XDG_CONFIG_HOME/wine"
-export WINEPREFIX
 
 # should probably go in config, but since I've never edited them... and some tools seem to bypass it
 JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CACHE_HOME/java"
@@ -75,8 +72,3 @@ eval "$(dircolors)"
 src_file_color="01;33"
 LS_COLORS="$LS_COLORS*.cpp=$src_file_color:*.hpp=$src_file_color:*.cxx=$src_file_color:*.hxx=$src_file_color:*.c=$src_file_color:*.h=$src_file_color:*.cmake=$src_file_color:" # c, c++
 LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
-
-###
-# GUI programs
-GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
-export GIMP2_DIRECTORY

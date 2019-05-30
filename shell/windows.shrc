@@ -25,14 +25,6 @@ as_admin() {
   cygstart --action=runas "$@"
 }
 
-load_vs() {
-  if [ -f "$prog_files""Microsoft Visual Studio 14.0/VC/vcvarsall.bat" ]; then
-    "$prog_files_6432""Microsoft Visual Studio 14.0/VC/vcvarsall.bat"
-  fi
-  if [ -f "$prog_files_6432""Microsoft Visual Studio 14.0/VC/vcvarsall.bat" ]; then
-    "$prog_files_6432""Microsoft Visual Studio 14.0/VC/vcvarsall.bat"
-  fi
-}
 
 append_program_dir_to_path "CMake/bin"
 if append_program_dir_to_path "Meld"; then
