@@ -11,21 +11,29 @@
 	pushup = push --set-upstream origin HEAD
 	start = !git init && git commit --allow-empty -m \"Initial commit\"
 
+	author = blame -w -M # don't blame people for changing whitespace or moving code
+
 [push]
 	default = simple
+	followTags = true
 
 [pull]
 	rebase = preserve
 
 [merge]
 	tool = meld
+	summary = true
 
 [diff]
 	tool = meld
 	algorithm = patience
 
+[log]
+	follow = true
+
 [rebase]
 	autostash = true
+	stat = true
 
 [difftool]
 	prompt = false
@@ -56,3 +64,6 @@
 
 [remote]
 	prune = true
+
+[core]
+	fscache = true
