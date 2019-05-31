@@ -7,11 +7,18 @@
 	d = diff --ignore-all-space
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
+	ciano = commit --amend --no-edit
 	pushfl = push --force-with-lease
 	pushup = push --set-upstream origin HEAD
 	start = !git init && git commit --allow-empty -m \"Initial commit\"
 
 	author = blame -w -M # don't blame people for changing whitespace or moving code
+
+	worked = !git l --all --author \"$(git config --get user.name)\"
+	
+	# delete branches
+	show-branch-deleted-remote = "!sh -c 'LANG=en_US; git branch -vv | grep --color=always gone || true'"
+	rm-branch-rm-on-remote     = "!sh -c 'git fetch -p && LANG=en_US; git branch -vv | grep gone | awk \"/: gone]/{print \\$1}\"| xargs --no-run-if-empty git branch -d'"
 
 [push]
 	default = simple
