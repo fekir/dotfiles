@@ -1,4 +1,3 @@
-:set fileencoding=utf-8 " The encoding written to file.
 
 " avoid cluttering home
 :let g:netrw_home=expand('~/.cache/nvim/')

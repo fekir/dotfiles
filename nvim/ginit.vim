@@ -1,3 +1,6 @@
-:set fileencoding=utf-8 " The encoding written to file.
 
 :colorscheme desert
+
+
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>

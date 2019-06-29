@@ -12,6 +12,7 @@ GitHub
 MSDN
 
 ## common programs
+CMake
 Cygwin
 Firefox
 Git
@@ -21,6 +22,7 @@ GPG
 Hangouts
 LaTeX
 MATLAB
+MSVC
 Mutt
 NeoMutt
 Nextcloud
@@ -31,12 +33,14 @@ sudo
 Taskwarrior
 Thunderbird
 valgrind
+VCS
 WeeChat
 Wine
 WSL
 
 ## Names
 Adams
+Alexandrescu
 Arrow
 Bambusi
 Bashforth
@@ -46,9 +50,10 @@ Butcher
 Cantelli
 Capasso
 Cauchy
-Céa
 Cramer
 Crank
+Càdlàg
+Céa
 Dirichlet
 Feigenbaum
 Fisher
@@ -90,10 +95,9 @@ Skorokhod
 Slutsky
 Smirnov
 Student
+Tiesler
 Walras
 Wilcoxon
-Tiesler
-Càdlàg
 
 ## definizioni
 value
@@ -110,8 +114,11 @@ modellizzare
 discretizzare
 
 ## it
-Unported
 Commons
+decltype
+pragma
+toolchain
+Unported
 
 ## altro - matematica
 Lagrangiano
