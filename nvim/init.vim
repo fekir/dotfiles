@@ -5,6 +5,14 @@
 if !empty($XDG_CACHE_HOME)
   :let g:netrw_home=$XDG_CACHE_HOME.'/nvim/'
 endif
+" other file manager settings
+:let g:netrw_banner = 0
+ " 4 open files in preivous windows tab, 3 opens in new tab
+:let g:netrw_browse_split = 4
+" most of the time filenames are not that long
+:let g:netrw_winsize = 20
+ " open on the right by default, unfortunately Vexplore! does not work anymore
+ :cnoreabbrev Vexplore Lexplore!
 
 " Set tab width to 4 spaces (no replace)
 :set tabstop=4
@@ -56,7 +64,14 @@ endif
 
 " diff hard to read, not a real fix
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+set diffopt+=algorithm:patience
+
 " in terminal mode, press esc to get normal mode
 tnoremap <Esc> <C-\><C-n>
 " and ctrl-v esc (mnemonic: Verbatim escape), to send esc to underlygin program
 tnoremap <C-v><Esc> <Esc>
+
+" https://vim.fandom.com/wiki/Show_fileencoding_and_bomb_in_the_status_line
+if has("statusline")
+  :set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+endif
