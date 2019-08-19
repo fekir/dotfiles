@@ -13,7 +13,7 @@ WWW_HOME='https://duckduckgo.com/lite/'
 export WWW_HOME
 if [ -z ${LYNX_SAVE_SPACE+x} ]; then
 #    LYNX_CFG_PATH
-  LYNX_SAVE_SPACE="$(xdg-user-dir DOWNLOAD 2>/dev/null || printf "$HOME")"
+  LYNX_SAVE_SPACE="$(xdg-user-dir DOWNLOAD 2>/dev/null || printf '%s\n' "$HOME")"
   export LYNX_SAVE_SPACE
 fi
 alias lynx='lynx -useragent="lynx"'
@@ -33,6 +33,7 @@ export VAGRANT_HOME
 
 PACKER_CACHE_DIR="$XDG_CACHE_HOME/packer"
 export PACKER_CACHE_DIR
+export CHECKPOINT_DISABLE=1
 
 CARGO_HOME="$XDG_CACHE_HOME/cargo"
 export CARGO_HOME
