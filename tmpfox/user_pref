@@ -1,0 +1,83 @@
+// default search engine
+
+user_pref("browser.startup.homepage", "https://start.duckduckgo.com/?kae=d");
+user_pref("startup.homepage_welcome_url", "https://start.duckduckgo.com/?kae=d");
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+
+// 0 is blank page
+user_pref("browser.startup.page", "0");
+
+// do not show activities on new blank page
+user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref("browser.newtabpage.activity-stream.showSearch", false);
+
+// sane tab behaviour
+user_pref("browser.ctrlTab.recentlyUsedOrder", false);
+
+// sane link behaviour, especially if using reddit
+// https://www.reddit.com/r/changelog/comments/2kp7zt/reddit_change_defaulting_to_opening_links_in_a/
+// https://support.mozilla.org/en-US/questions/1199017
+user_pref("browser.link.open_newwindow", 1);
+user_pref("browser.link.open_newwindow.restriction", 0);
+user_pref("browser.link.open_newwindow.override.external", 3);
+
+// do not hide url in fullscreen mode
+user_pref("browser.fullscreen.autohide", false);
+
+// set default language to english
+user_pref("spellchecker.dictionary", "en-US");
+user_pref("intl.accept_languages", "en-US, en");
+user_pref("intl.locale.matchOS", false);
+user_pref("javascript.use_us_english_locale", true);
+
+
+// privacy-related settings, copied from https://ffprofile.com
+user_pref("app.update.auto", false);
+user_pref("beacon.enabled", false);
+user_pref("breakpad.reportURL", "");
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit", false);
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
+user_pref("browser.newtab.preload", false);
+user_pref("browser.send_pings", false);
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("dom.battery.enabled", false);
+user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("dom.indexedDB.enabled", false);
+user_pref("dom.webaudio.enabled", false);
+user_pref("extensions.getAddons.cache.enabled", false);
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.webservice.discoverURL", "");
+user_pref("media.navigator.enabled", false);
+user_pref("media.peerconnection.enabled", false);
+user_pref("media.video_stats.enabled", false);
+user_pref("network.IDN_show_punycode", true);
+user_pref("network.captive-portal-service.enabled", false);
+// 0 All cookies are allowed. (Default)
+// 1 Only cookies from the originating server are allowed.
+// 2 No cookies are allowed.
+user_pref("network.cookie.cookieBehavior", 1);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.http.referer.spoofSource", true);
+user_pref("network.http.speculative-parallel-limit", "0");
+user_pref("network.prefetch-next", false);
+user_pref("network.trr.mode", 5);
+user_pref("privacy.donottrackheader.enabled", true);
+user_pref("privacy.donottrackheader.value", 1);
+user_pref("privacy.resistFingerprinting", true);
+user_pref("privacy.trackingprotection.enabled", true);
+user_pref("privacy.trackingprotection.pbmode.enabled", true);
+user_pref("privacy.usercontext.about_newtab_segregation.enabled", true);
+user_pref("security.ssl.disable_session_identifiers", true);
+user_pref("signon.autofillForms", false);
+user_pref("webgl.disabled", true);
+user_pref("webgl.renderer-string-override", " ");
+user_pref("webgl.vendor-string-override", " ");
+
+# automatically install addons, but only from this profile
+# https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Distribution_options/Add-ons_in_the_enterprise
+user_pref("extensions.autoDisableScopes", 0);
+user_pref("extensions.enabledScopes",  1);
