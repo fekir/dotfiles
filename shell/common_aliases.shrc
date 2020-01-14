@@ -9,6 +9,7 @@ define_alias_ifndef 'll.' 'ls -lhAd .* --color=auto'
 define_alias_ifndef 'l' 'ls --color=auto'
 define_alias_ifndef 'lsd' 'ls --group-directories-first --color=auto'
 
+define_alias_ifndef 'e' "$HOME/bin/nvim.appimage" "$HOME/bin/nvim.appimage"
 define_alias_ifndef 'e' 'editor' 'editor'
 define_alias_ifndef 'e' 'nvim' 'nvim'
 define_alias_ifndef 'e' 'vim' 'vim'

@@ -13,6 +13,7 @@ MSDN
 
 ## common programs
 CMake
+Cppcheck
 Cygwin
 Firefox
 GPG
@@ -27,15 +28,18 @@ NeoMutt
 Nextcloud
 Octave
 PoDoFo
+ReactOS
 SSH
 Skype
 Taskwarrior
 Thunderbird
 VCS
+VirtualBox
 WSL
 WeeChat
 Wine
 git-annex
+nvim
 sudo
 valgrind
 
@@ -110,5 +114,10 @@ decltype
 pragma
 toolchain
 whitespace
+
+# programming
+const
+iostream
+noexcept
 
 # new - to sort

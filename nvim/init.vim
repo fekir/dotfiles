@@ -51,10 +51,11 @@ endif
 " Spell settings
 :hi clear SpellBad
 :hi clear SpellCap
-:hi SpellBad cterm=undercurl,bold
-:hi SpellCap cterm=undercurl,bold
+:hi SpellBad cterm=underline,bold
+:hi SpellCap cterm=underline,bold
 " https://github.com/neovim/neovim/issues/7479
-":hi SpellCap cterm=undercurl ctermfg=red
+:hi SpellCap cterm=underline,bold
+:hi SpellBad cterm=underline,bold
 :set spelllang=en " FIXME: would be nice to autodetect languages
 :set spell " FIXME: makes little sense to enable it when opening binary file
 
