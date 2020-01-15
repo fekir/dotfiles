@@ -1,0 +1,9 @@
+# copyright/welcome message
+startup_message off
+
+mousetrack on
+
+# keep scrollback n lines
+defscrollback 1000
+
+bindkey | eval "split -v" "focus" "screen"
