@@ -1,7 +1,7 @@
 " solarized not avaiable
 :colorscheme desert
 
-" gui should always support utf8 symbols, evne on windows
+" gui should always support utf8 symbols, even on windows
 :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 :set showbreak=↪
 
