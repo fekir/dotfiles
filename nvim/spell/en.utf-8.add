@@ -15,10 +15,9 @@ MSDN
 CMake
 Cygwin
 Firefox
-Git
-git-annex
-GnuCash
 GPG
+Git
+GnuCash
 Hangouts
 LaTeX
 MATLAB
@@ -27,16 +26,18 @@ Mutt
 NeoMutt
 Nextcloud
 Octave
-Skype
+PoDoFo
 SSH
-sudo
+Skype
 Taskwarrior
 Thunderbird
-valgrind
 VCS
+WSL
 WeeChat
 Wine
-WSL
+git-annex
+sudo
+valgrind
 
 ## Names
 Adams
@@ -100,13 +101,14 @@ Walras
 Wilcoxon
 
 ## it
+AcroForm
 Commons
+FIXME
+Unported
 cpp
 decltype
-FIXME
 pragma
 toolchain
-Unported
 whitespace
 
 # new - to sort
