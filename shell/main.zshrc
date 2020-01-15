@@ -8,14 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Fortune message
-if [[ "$TERM" = screen* ]] || [ "$THEME_MINIMAL" = "true" ]; ; then
-  :
-else
-  message=$(fortune -s 2>/dev/null || echo "Welcome")
-  cowsay -f duck -- "$message" 2>/dev/null;
-fi
-
 autoload -U select-word-style
 select-word-style bash
 bindkey "^[[1;5C" forward-word
@@ -76,3 +68,6 @@ if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then
 fi
 
 source_opt_file '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+
+# update path
+test "${PATH#*$HOME/bin:}" != "$PATH" || PATH="$HOME/bin:$PATH"

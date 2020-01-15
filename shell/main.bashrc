@@ -8,15 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Fortune message, avoid in scree/tmux since we will already have seen the first one
-if [[ "$TERM" = screen* ]]  || [ "$THEME_MINIMAL" = "true" ]; then
-  :
-else
-  message=$(fortune -s 2>/dev/null || echo "Welcome")
-  cowsay -f duck -- "$message" 2>/dev/null;
-fi
-
-
 # Make sure display get updated when terminal window get resized
 shopt -q -s checkwinsize
 
@@ -48,3 +39,6 @@ fi
 
 # disable ctrl+s
 stty -ixon
+
+# update path
+test "${PATH#*$HOME/bin:}" != "$PATH" || PATH="$HOME/bin:$PATH"
