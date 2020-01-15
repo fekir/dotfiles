@@ -3,19 +3,55 @@
 	ci = commit
 	st = status
 
-	a = add
-	d = diff --ignore-all-space
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	a  = add
+	ap = add -p
+	d  = diff --ignore-all-space
+	ds = diff --ignore-all-space --staged
+	l  = log         --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --abbrev-commit
 
-	ciano = commit --amend --no-edit
 	pushfl = push --force-with-lease
 	pushup = push --set-upstream origin HEAD
 	start = !git init && git commit --allow-empty -m \"Initial commit\"
 
-	author = blame -w -M # don't blame people for changing whitespace or moving code
+	# don't blame people for changing whitespace or moving code
+	author = blame -w -M10 -C20 --indent-heuristic
+
+	# example usages:
+	#  git stat-nr-commits-by-author
+	#  git stat-nr-commits-by-author master
+	stat-nr-commits-by-author = "!sh -c 'git log --no-merges --format=\"  %aN\" \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init' \"$@\""
+	# example usages:
+	#  git stat-nr-merges-by-author
+	#  git stat-nr-merges-by-author develop
+	stat-nr-merges-by-author  = "!sh -c 'git log    --merges --format=\"  %aN\" \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init' \"$@\""
+
+	# similar to git log --shortstat, but output in one line, and always shows insertions and deletions
+	# example usages:
+	#  git log-change-stat
+	#  git log-change-stat HEAD~3..HEAD
+	# FIXME:
+	log-change-stat= "!sh -c 'git log --no-merges --pretty=format:\"@%h\" --shortstat \"$@\" | tr \"\\n\" \" \" | tr \"@\" \"\\n\" | awk NF | awk \"{if(!/\\\\yinsertion.*\\\\y/)gsub(/changed,/, \\\"changed, 0 insertions(+),\\\");print }\" | awk \"{if(!/\\\\ydeletion.*\\\\y/)gsub(/insertions\\\\(\\\\+\\\\)/, \\\"insertions(+), 0 deletions(-)\\\");print }\" | less --raw-control-chars --quit-if-one-screen --no-init' \"$@\""
+	# example usages:
+	#  git stat-log-nr-lines
+	#  git stat-log-nr-lines master
+	# FIXME: shortstat does not place 0 if no file where added or removed, so sometimes removed line are counted as added
+	stat-log-nr-lines = "!sh -c 'git log-change-stat \"$@\" | awk \"{commit=\\$1; add=\\$5; del=\\$7; total=\\$5 - \\$7; printf \\\"%+7s %+8s insertions(+) %+8s deletions(-) %+9s total lines\\n\\\", commit, add, del, total} \" | less --raw-control-chars --quit-if-one-screen --no-init' \"$@\""
+	# it already filters out some outliers
+	stat-log-nr-lines-cum = "!sh -c 'git stat-log-nr-lines --reverse \"$@\" | awk -vORS= \"{print; cum+=\\$(NF-2); printf \\\"%+12s cumulative lines\\n\\\", cum} \" | less --raw-control-chars --quit-if-one-screen --no-init' \"$@\""
+
+	# FIXME: reuse stat-log-nr-lines-cum
+	stat-log-nr-lines-cum-graph = "!sh -c 'git stat-log-nr-lines --reverse \"$@\" | awk \"{cum+=\\$(NF-2); printf \\\"%s\\n\\\", cum} \" | gnuplot -p -e \"plot \\\"/dev/stdin\\\"\"' \"$@\""
+
+
+	# example usages:
+	#  git stat-nr-lines-author "Federico Kircheis" # shows added, removed and total lines
+	# notice: would be nice to have fb/directory as parameter
+	stat-nr-lines-author   = "!sh -c 'git log --author=\"$1\" --no-merges --pretty=tformat: --numstat | awk \"{add += \\$1; subs += \\$2; total += \\$1 - \\$2; files +=1} END {printf \\\"%+7s files changed, %+8s insertions(+), %+8s deletions(-), %+9s total lines\\n\\\", files, add, subs, total}\"' \"$@\""
+	stat-nr-lines-every-author = "!sh -c 'git log --no-merges --format=\"%aN\" | sort -u | while read name; do printf \"%-25s  \" \"$name\"; git stat-nr-lines-author \"$name\"; done | less --quit-if-one-screen --no-init' \"$@\""
 
 	worked = !git l --all --author \"$(git config --get user.name)\"
-	
+
 	# delete branches
 	show-branch-deleted-remote = "!sh -c 'LANG=en_US; git branch -vv | grep --color=always gone || true'"
 	rm-branch-rm-on-remote     = "!sh -c 'git fetch -p && LANG=en_US; git branch -vv | grep gone | awk \"/: gone]/{print \\$1}\"| xargs --no-run-if-empty git branch -d'"
@@ -32,7 +68,6 @@
 	summary = true
 
 [diff]
-	tool = meld
 	algorithm = patience
 
 [log]
@@ -41,6 +76,7 @@
 [rebase]
 	autostash = true
 	stat = true
+	missingCommitsCheck = error
 
 [difftool]
 	prompt = false
