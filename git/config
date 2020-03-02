@@ -12,7 +12,9 @@
 
 	pushfl = push --force-with-lease
 	pushup = push --set-upstream origin HEAD
-	start = !git init && git commit --allow-empty -m \"Initial commit\"
+	start = !git init && git commit --allow-empty -m '🎉 Initial commit'
+
+	ciano = commit --amend --no-edit
 
 	# don't blame people for changing whitespace or moving code
 	author = blame -w -M10 -C20 --indent-heuristic
@@ -69,7 +71,6 @@
 	rebase = preserve
 
 [merge]
-	tool = meld
 	summary = true
 
 [diff]
