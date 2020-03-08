@@ -17,9 +17,22 @@ endif
 :set tabstop=4
 :set shiftwidth=0
 
-" Set line numbers
+" Set line numbers, highlight current one
 :set number
 :set relativenumber
+:highlight CursorLineNr cterm=bold ctermfg=012
+":highlight LineNr cterm=bold ctermfg=012 " applies to all lines :-( should fill a bug?
+" FIXME CursorLineNr should works without setting cursorline, but then only with relativenumber
+" thus remove underline
+:highlight clear CursorLine
+:set cursorline
+
+" switch to nonrelative when no focus
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END
 
 " Enable mouse support
 :set mouse=a
@@ -43,6 +56,7 @@ endif
 :map <up> gk
 :map <down> gj
 
+:set scrolloff=5
 
 " temp disable current search highlight (activates again when searching or pressing n)
 :nnoremap <return> :nohlsearch<return><return>
