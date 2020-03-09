@@ -1,7 +1,11 @@
-" use ctrl+s for saving, supposgin that stty -ixon in *shrc
 noremap  <silent> <C-S>              :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" use CTRL-F for searching
+noremap  <expr> <C-F> "/"
+inoremap <expr> <C-F> "\<C-\>\<C-O>/"
+cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
 " scroll up/down by screen line and not by logical line
 " does not work in edit mode

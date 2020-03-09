@@ -5,8 +5,7 @@
 :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 :set showbreak=↪
 
-" copy and paste like in gui programs, middlemouse works OOB
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
+" mswin defines most keybindings used in graphical text editors,
+" like undo (CTRL-Z), redo (CTRL-Y), select all (CTRL-A), copy (CTRL-C)
+" paste (CTRL-V), cut (CTRL-X), save (CTRL+S)
+source $VIMRUNTIME/mswin.vim

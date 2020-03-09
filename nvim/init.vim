@@ -32,4 +32,3 @@ runtime key.vim
 " diff hard to read, not a real fix
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 set diffopt+=algorithm:patience
-
