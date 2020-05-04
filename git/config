@@ -16,6 +16,11 @@
 
 	# don't blame people for changing whitespace or moving code
 	author = blame -w -M10 -C20 --indent-heuristic
+	
+	conflicts = diff --name-only --diff-filter=U
+	# https://gist.github.com/jacobvosmaer/3187346#gistcomment-387174
+	conflicts-edit = !git conflicts -z | xargs --null --open-tty --no-run-if-empty vim -p
+	conflicts-add  = !git conflicts -z | xargs --null git add
 
 	# example usages:
 	#  git stat-nr-commits-by-author
