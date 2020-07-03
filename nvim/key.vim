@@ -1,3 +1,4 @@
+" use ctrl+s for saving, supposing that stty -ixon in *shrc
 noremap  <silent> <C-S>              :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
@@ -12,11 +13,13 @@ cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 :map <up> gk
 :map <down> gj
 
-" temp disable current search highlight (activates again when searching or pressing n)
-:nnoremap <return> :nohlsearch<return><return>
-:nnoremap <esc> :nohlsearch<return><esc>
+if has("nvim")
+	" temp disable current search highlight (activates again when searching or pressing n)
+	:nnoremap <return> :nohlsearch<return><return>
+	:nnoremap <esc> :nohlsearch<return><esc>
 
-" in terminal mode, press esc to get normal mode
-tnoremap <Esc> <C-\><C-n>
-" and ctrl-v esc (mnemonic: Verbatim escape), to send esc to underlygin program
-tnoremap <C-v><Esc> <Esc>
+	" in terminal mode, press esc to get normal mode
+	:tnoremap <Esc> <C-\><C-n>
+	" and ctrl-v esc (mnemonic: Verbatim escape), to send esc to underlying program
+	:tnoremap <C-v><Esc> <Esc>
+endif

@@ -21,13 +21,14 @@ augroup numbertoggle
 augroup END
 
 " Listchars - how to represent whitespace
-:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-:set showbreak=↪
-" windows cmd and powershell do not support UTF-8 (yet)
 if has('win32')
+  " still having issues with windows cmd and powershell and UTF-8
   " Not using whitespace as second char for tab, otherwise it gets confused with the normal whitespace
   :set listchars=tab:\|_,eol:$,nbsp:~,trail:^,extends:>,precedes:<
   :set showbreak=\\
+else
+  :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+  :set showbreak=↪
 endif
 :set list
 
