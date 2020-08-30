@@ -68,6 +68,7 @@ if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then
 fi
 
 source_opt_file '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+zstyle ':completion:*:hosts' hosts # do not read host file, as most entries are blacklist (see https://github.com/ohmyzsh/ohmyzsh/issues/7397)
 
 # update path
 test "${PATH#*$HOME/bin:}" != "$PATH" || PATH="$HOME/bin:$PATH"
