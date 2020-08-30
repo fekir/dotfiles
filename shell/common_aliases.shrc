@@ -15,6 +15,7 @@ define_alias_ifndef 'e' 'nvim' 'nvim'
 define_alias_ifndef 'e' 'vim' 'vim'
 
 define_alias_ifndef 'tigref' 'git reflog --pretty=raw | tig --pretty=raw' 'tig'
+define_alias_ifndef 'ncdu-annex' 'ncdu --color=dark -x --follow-symlinks --exclude=".git"' 'ncdu'
 
 # wget
 alias wget='wget -c'
