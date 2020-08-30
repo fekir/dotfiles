@@ -25,6 +25,8 @@ lynx_search(){
 GPRC="$XDG_CONFIG_HOME/gp/rc"
 export GPRC
 
+export PYTHONDONTWRITEBYTECODE=1
+
 export SYSSCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
