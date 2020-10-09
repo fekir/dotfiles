@@ -33,7 +33,7 @@ source_opt_file "$CURRENTDIR/shell.local/temp.bashrc"
 source_opt_file "$CURRENTDIR/theme.bashrc"
 
 sysname=$(uname -s)
-if [ "${sysname:0:9}" == "CYGWIN_NT" ]; then
+if [ "${sysname:0:9}" == "CYGWIN_NT" ] || [ "${sysname:0:10}" == "MINGW32_NT" ] || [ "${sysname:0:10}" == "MINGW64_NT" ] || [ "${sysname:0:7}" == "MSYS_NT" ]; then :;
   source_opt_file "$CURRENTDIR/windows.shrc"
 fi
 

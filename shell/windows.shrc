@@ -44,12 +44,15 @@ alias ls="ls --color=auto --append-exe"
 # FIXME: create function, if -File used, use cygpath
 alias defender='/cygdrive/c/Program\ Files/Windows\ Defender/MpCmdRun.exe'
 
-explorer() {
-  # explorer.exe return 1 in case of "success"
-  if [ -z "${1+x}" ]; then
-    dirpath="." 
+explorer() {(
+  # cd instead of passing path as param to avoid issues with cygwin/mingw/git-bash differences and conversions, also explorer is picky about / and \
+  # but cd might fail with server paths, while explorer might prompt for more informations... could try a fallback stratey
+  [ $# -eq 0 ] && set -- "$@" '.';
+  if [ $# -eq 1 ] && [ -d "$1" ]; then :;
+    cd "$1";
+    # explorer.exe return 1 in case of "success"
+    explorer.exe . || [ $? -eq 1 ]
   else
-    dirpath="$(cygpath -w "${1}")"
+    explorer.exe "$@" || [ $? -eq 1 ]
   fi
-  explorer.exe "$dirpath" || [ $? -eq 1 ]
-}
+)}
