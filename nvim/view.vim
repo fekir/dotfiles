@@ -1,3 +1,5 @@
+set encoding=utf-8
+scriptencoding utf-8
 
 :set scrolloff=5
 :set tabpagemax=500
@@ -21,15 +23,14 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
 
+:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,conceal:*,nbsp:·
+:set showbreak=↪
 " Listchars - how to represent whitespace
+" issues with windows cmd/powershell and UTF-8
 if has('win32')
-  " still having issues with windows cmd and powershell and UTF-8
   " Not using whitespace as second char for tab, otherwise it gets confused with the normal whitespace
-  :set listchars=tab:\|_,eol:$,nbsp:~,trail:^,extends:>,precedes:<
+  :set listchars=tab:\|_,eol:¶,nbsp:~,trail:^,extends:>,precedes:<,conceal:*,nbsp:·
   :set showbreak=\\
-else
-  :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-  :set showbreak=↪
 endif
 :set list
 
