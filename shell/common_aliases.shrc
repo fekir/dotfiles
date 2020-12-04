@@ -20,6 +20,9 @@ define_alias_ifndef 'ncdu-annex' 'ncdu --color=dark -x --follow-symlinks --exclu
 # wget
 alias wget='wget -c'
 
+alias mv='mv --interactive'
+alias cp='cp --interactive'
+
 # grep, on some platforms (like termux on android), does not support colors
 #export GREP_OPTIONS='--color=auto' # deprecated --> alternatives without using alias???
 grep --color --help >/dev/null 2>/dev/null && alias grep='grep --color=auto'
