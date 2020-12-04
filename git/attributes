@@ -1,6 +1,14 @@
-# Common formats crlf defined as line break
-*.vcf eol=crlf
-*.ics eol=crlf
+# default settings
+#* eol=lf
 
 # File that needs crlf as line break to work
-*.bat eol=crlf
+#*.bat eol=crlf
+#*.cmd eol=crlf
+
+# File that needs lf as line break to work
+#*.ps1 eol=lf
+#*.sh  eol=lf
+
+# Common formats with crlf defined as line break
+#*.vcf eol=crlf
+#*.ics eol=crlf
