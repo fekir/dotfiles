@@ -1,5 +1,6 @@
 
 :set scrolloff=5
+:set tabpagemax=500
 
 " Set line numbers
 :set number
