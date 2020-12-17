@@ -191,7 +191,7 @@ detect_term() {
 }
 
 ssht() {
-  ssh -t "$@" "tmux new-session -A -s ssh_session";
+  ssh -t "$@" "tmux new-session -A -s ssh_session\; set-option -g prefix2 C-a";
 }
 
 tmux_leave_session_for(){
