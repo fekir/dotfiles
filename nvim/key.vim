@@ -13,6 +13,10 @@ cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 :map <up> gk
 :map <down> gj
 
+" use U for undoing undo (redo)
+" prevent to use U by accident to introduce new change
+nnoremap U <C-R>
+
 if has("nvim")
 	" temp disable current search highlight (activates again when searching or pressing n)
 	:nnoremap <return> :nohlsearch<return><return>
