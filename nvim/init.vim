@@ -21,3 +21,8 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 if has("nvim")
 	set diffopt+=algorithm:patience
 endif
+
+" search settings, case insensitive unless searching upper-case (make case
+" sensitive with \C
+:set ignorecase
+:set smartcase
