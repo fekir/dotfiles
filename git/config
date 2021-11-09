@@ -116,3 +116,6 @@
 
 [core]
 	fscache = true
+
+[init]
+	defaultBranch = master
