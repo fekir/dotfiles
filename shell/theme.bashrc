@@ -103,9 +103,9 @@ theme_cvs(){
 
 # load theme
 if [ "$THEME_MINIMAL" = "true" ]; then
-  theme_minimal
-elif theme_powerline; then
- :
+  theme_minimal;
+elif [ "$TERM_PROGRAM" != "vscode" ] && theme_powerline ; then
+  :;
 else
-  theme_cvs
+  theme_cvs;
 fi

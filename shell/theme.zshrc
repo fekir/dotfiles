@@ -48,13 +48,13 @@ theme_git(){
 
 # load theme
 if [ "$THEME_MINIMAL" = "true" ]; then
-  theme_minimal
-elif theme_powerline; then
-  :
+  theme_minimal;
+elif [ "$TERM_PROGRAM" != "vscode" ] && theme_powerline ; then
+  :;
 else
-  theme_git
+  theme_git;
 fi
 
-if [[ $+MC_SID = 1 ]] ; then
-  theme_fix_mc
+if [ "$+MC_SID" = "1" ] ; then
+  theme_fix_mc;
 fi
