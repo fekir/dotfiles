@@ -1,5 +1,5 @@
 // default search engine
-
+// FIXME: find how to show by default search bar, then start page can even be blank by default
 user_pref("browser.startup.homepage", "https://start.duckduckgo.com/?kae=d");
 user_pref("startup.homepage_welcome_url", "https://start.duckduckgo.com/?kae=d");
 user_pref("browser.startup.homepage_override.mstone", "ignore");
@@ -61,7 +61,8 @@ user_pref("network.captive-portal-service.enabled", false);
 // 2 No cookies are allowed.
 user_pref("network.cookie.cookieBehavior", 1);
 user_pref("network.dns.disablePrefetch", true);
-user_pref("network.http.referer.spoofSource", true);
+// break analytics
+//user_pref("network.http.referer.spoofSource", true);
 user_pref("network.http.speculative-parallel-limit", "0");
 user_pref("network.prefetch-next", false);
 user_pref("network.trr.mode", 5);
