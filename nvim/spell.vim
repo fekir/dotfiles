@@ -11,7 +11,7 @@
 :set spell " FIXME: makes little sense to enable it when opening binary file
 ":set termguicolors
 
-"" Both do not seems to work fromt he config file, but if given manually yes
+"" Both do not seems to work from the configuration file, but if given manually yes
 
 " spellcheck settings: avoid checking urls
 :syn match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
