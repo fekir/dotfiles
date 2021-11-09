@@ -2,16 +2,19 @@
 	co = checkout
 	ci = commit
 	st = status
+	sw = switch
 
 	a  = add
-	ap = add -p
 	d  = diff --ignore-all-space
 	ds = diff --ignore-all-space --staged
+	r  = restore
+	rs = restore --staged
 	l  = log         --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --abbrev-commit
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --abbrev-commit
 
 	pushfl = push --force-with-lease
 	pushup = push --set-upstream origin HEAD
+
 	start = !git init && git commit --allow-empty -m '🎉 Initial commit'
 
 	ciano = commit --amend --no-edit
