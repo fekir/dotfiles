@@ -16,7 +16,7 @@ scriptencoding utf-8
 :highlight clear CursorLine
 :set cursorline
 
-" switch to nonrelative when focus lost
+" switch to nonrelative when focus lost -> breaks welcome screen
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif

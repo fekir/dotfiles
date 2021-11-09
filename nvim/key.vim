@@ -1,10 +1,10 @@
 " use ctrl+s for saving, supposing that stty -ixon in *shrc
-noremap  <silent> <C-S>              :update<CR>
+ noremap <silent> <C-S>              :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " use CTRL-F for searching
-noremap  <expr> <C-F> "/"
+ noremap <expr> <C-F> "/"
 inoremap <expr> <C-F> "\<C-\>\<C-O>/"
 cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
