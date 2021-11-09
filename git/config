@@ -24,44 +24,45 @@
 	# don't blame people for changing whitespace or moving code
 	author = blame -w -M10 -C20 --indent-heuristic
 	
-	conflicts = diff --name-only --diff-filter=U
 	# https://gist.github.com/jacobvosmaer/3187346#gistcomment-387174
+	conflicts = diff --name-only --diff-filter=U
+	#using vim -p for opening multiple tabs
 	conflicts-edit = !git conflicts -z | xargs --null --open-tty --no-run-if-empty vim -p
 	conflicts-add  = !git conflicts -z | xargs --null git add
 
 	# example usages:
 	#  git stat-nr-commits-by-author
 	#  git stat-nr-commits-by-author master
-	stat-nr-commits-by-author = "!f(){ git log --no-merges --format=\"  %aN\" \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init; }; f"
+	stat-nr-commits-by-author = "!f(){ git log --no-merges --format='  %aN' \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init; }; f"
 	# example usages:
 	#  git stat-nr-merges-by-author
 	#  git stat-nr-merges-by-author develop
-	stat-nr-merges-by-author  = "!f(){ git log    --merges --format=\"  %aN\" \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init; }; f"
+	stat-nr-merges-by-author  = "!f(){ git log    --merges --format='  %aN' \"$@\" | sort | uniq -c | sort -nr | less --quit-if-one-screen --no-init; }; f"
 
 	# similar to git log --shortstat, but output in one line, and always shows insertions and deletions
 	# example usages:
 	#  git log-change-stat
 	#  git log-change-stat HEAD~3..HEAD
 	# FIXME:
-	log-change-stat= "!f(){ git log --no-merges --pretty=format:\"@%h\" --shortstat \"$@\" | tr \"\\n\" \" \" | tr \"@\" \"\\n\" | awk NF | awk \"{if(!/\\\\yinsertion.*\\\\y/)gsub(/changed,/, \\\"changed, 0 insertions(+),\\\");print }\" | awk \"{if(!/\\\\ydeletion.*\\\\y/)gsub(/insertions\\\\(\\\\+\\\\)/, \\\"insertions(+), 0 deletions(-)\\\");print }\" | less --quit-if-one-screen --no-init; }; f"
+	log-change-stat= "!f(){ git log --no-merges --pretty=format:@%h --shortstat \"$@\" | tr '\n' ' ' | tr @ '\n' | awk NF | awk '{if(!/\\yinsertion.*\\y/)gsub(/changed,/, \"changed, 0 insertions(+),\");print }' | awk '{if(!/\\ydeletion.*\\y/)gsub(/insertions\\(\\+\\)/, \"insertions(+), 0 deletions(-)\");print }' | less --quit-if-one-screen --no-init; }; f"
 	# example usages:
 	#  git stat-log-nr-lines
 	#  git stat-log-nr-lines master
 	#  git stat-log-nr-lines HEAD~3..HEAD
 	# FIXME: shortstat does not place 0 if no file where added or removed, so sometimes removed line are counted as added
-	stat-log-nr-lines = "!f(){ git log-change-stat \"$@\" | awk \"{commit=\\$1; add=\\$5; del=\\$7; total=\\$5 - \\$7; printf \\\"%+7s %+8s insertions(+) %+8s deletions(-) %+9s total lines\\n\\\", commit, add, del, total} \" | less --quit-if-one-screen --no-init; }; f"
+	stat-log-nr-lines = "!f(){ git log-change-stat \"$@\" | awk '{commit=$1; add=$5; del=$7; total=$5 - $7; printf \"%+7s %+8s insertions(+) %+8s deletions(-) %+9s total lines\\n\", commit, add, del, total}' | less --quit-if-one-screen --no-init; }; f"
 	# it already filters out some outliers
-	stat-log-nr-lines-cum = "!f(){ git stat-log-nr-lines --reverse \"$@\" | awk -vORS= \"{print; cum+=\\$(NF-2); printf \\\"%+12s cumulative lines\\n\\\", cum} \" | less --quit-if-one-screen --no-init; }; f"
+	stat-log-nr-lines-cum = "!f(){ git stat-log-nr-lines --reverse \"$@\" | awk -vORS= '{print; cum+=$(NF-2); printf \"%+12s cumulative lines\\n\", cum}' | less --quit-if-one-screen --no-init; }; f"
 
 	# FIXME: reuse stat-log-nr-lines-cum
-	stat-log-nr-lines-cum-graph = "!f(){ git stat-log-nr-lines --reverse \"$@\" | awk \"{cum+=\\$(NF-2); printf \\\"%s\\n\\\", cum} \" | gnuplot -p -e \"plot \\\"/dev/stdin\\\"\"; }; f"
+	stat-log-nr-lines-cum-graph = "!f(){ git stat-log-nr-lines --reverse \"$@\" | awk '{cum+=$(NF-2); printf \"%s\\n\", cum} ' | gnuplot -p -e 'plot \"/dev/stdin\"'; }; f"
 
 
 	# example usages:
 	#  git stat-nr-lines-author "Federico Kircheis" # shows added, removed and total lines
 	# notice: would be nice to have fb/directory as parameter
-	stat-nr-lines-author   = "!f(){ git log --author=\"$1\" --no-merges --pretty=tformat: --numstat | awk \"{add += \\$1; subs += \\$2; total += \\$1 - \\$2; files +=1} END {printf \\\"%+7s files changed, %+8s insertions(+), %+8s deletions(-), %+9s total lines\\n\\\", files, add, subs, total}\"; }; f"
-	stat-nr-lines-every-author = "!f(){ git log --no-merges --format=\"%aN\" | sort -u | while read name; do printf \"%-25s  \" \"$name\"; git stat-nr-lines-author \"$name\"; done | less --quit-if-one-screen --no-init; }; f"
+	stat-nr-lines-author   = "!f(){ git log --author=\"$1\" --no-merges --pretty=tformat: --numstat | awk '{add += $1; subs += $2; total += $1 - $2; files +=1} END {printf \"%+7s files changed, %+8s insertions(+), %+8s deletions(-), %+9s total lines\\n\", files, add, subs, total}'; }; f"
+	stat-nr-lines-every-author = "!f(){ git log --no-merges --format=%aN | sort -u | while read name; do printf '%-25s  ' \"$name\"; git stat-nr-lines-author \"$name\"; done | less --quit-if-one-screen --no-init; }; f"
 
 	worked = !git l --all --author \"$(git config --get user.name)\"
 
