@@ -176,7 +176,7 @@ to_ascii_file(){
 
 
 # not all programs support truecolor, but they may support and detect *-256 color
-detect_term() {
+detect_term() { :;
   #if [ "$COLORTERM" = "truecolor" ]; then :;
   #  if [ "$TERM" = "xterm" ]; then :;
   #    export TERM='xterm-256color';
