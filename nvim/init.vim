@@ -7,6 +7,10 @@ runtime fm.vim
 
 runtime view.vim
 
+" ease working with buffers
+:set hidden
+:nnoremap gb :ls<CR>:b
+
 " Enable mouse support
 :set mouse=a
 
