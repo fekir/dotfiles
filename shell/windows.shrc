@@ -42,7 +42,9 @@ fi
 alias ls="ls --color=auto --append-exe"
 
 # FIXME: create function, if -File used, use cygpath
-alias defender='/cygdrive/c/Program\ Files/Windows\ Defender/MpCmdRun.exe'
+defender(){
+  '/cygdrive/c/Program\ Files/Windows\ Defender/MpCmdRun.exe'
+}
 
 explorer() {(
   # cd instead of passing path as param to avoid issues with cygwin/mingw/git-bash differences and conversions, also explorer is picky about / and \
