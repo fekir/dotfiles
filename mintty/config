@@ -6,8 +6,7 @@ BellType=0
 
 Columns=140
 Rows=30
-BackgroundColour=15,15,15
-FontHeight=10
+FontHeight=14
 
 ClipShortcuts=yes
 Locale=en_US
