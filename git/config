@@ -75,13 +75,14 @@
 	followTags = true
 
 [pull]
-	rebase = preserve
+	rebase = true
 
 [merge]
 	summary = true
 
 [diff]
 	algorithm = patience
+	colorMoved = zebra
 
 [log]
 	follow = true
