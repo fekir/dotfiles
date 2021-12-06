@@ -31,3 +31,12 @@ endif
 " sensitive with \C
 :set ignorecase
 :set smartcase
+
+if has('win32')
+	set shell=powershell.exe
+	set shellxquote=
+	let &shellcmdflag = '-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command '
+	let &shellquote   = ''
+	let &shellpipe    = '| Out-File -Encoding UTF8 %s'
+	let &shellredir   = '| Out-File -Encoding UTF8 %s'
+endif
