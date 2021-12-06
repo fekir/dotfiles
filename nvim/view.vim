@@ -42,4 +42,13 @@ endif
 " show search-replace in separate window while typing
 if has("nvim")
 	":set inccommand=split
+else
+	" nvim does this automatically
+	" in vim, this causes issues from cmd
+	" powershell/gvim seem to change cursor automatically
+	if has("unix")
+		let &t_SI = "\<esc>[5 q"
+		let &t_SR = "\<esc>[5 q"
+		let &t_EI = "\<esc>[2 q"
+	endif
 endif
