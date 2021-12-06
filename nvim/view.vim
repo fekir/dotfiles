@@ -43,6 +43,7 @@ endif
 if has("nvim")
 	":set inccommand=split
 else
+	:syntax on
 	" nvim does this automatically
 	" in vim, this causes issues from cmd
 	" powershell/gvim seem to change cursor automatically
