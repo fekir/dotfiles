@@ -23,6 +23,10 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
 
+" mark "extra" whitespace as error, ie trailing whitespace of any kind, and
+" space followed by tabs
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace / \+\t\|\s\+$/
 :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,conceal:*,nbsp:·
 :set showbreak=↪
 " Listchars - how to represent whitespace
