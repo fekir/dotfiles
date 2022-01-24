@@ -25,6 +25,14 @@ runtime spell.vim
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 if has("nvim")
 	set diffopt+=algorithm:patience
+else
+	" causes issues wit vim called from cmd/directly (or powershell inside cmd), works in ps, git-bash and cygwin (+tmux, +zsh)
+	if has("unix")
+		" in powershell seems to change automatically
+		let &t_SI = "\<esc>[5 q"
+		let &t_SR = "\<esc>[5 q"
+		let &t_EI = "\<esc>[2 q"
+	endif
 endif
 
 " search settings, case insensitive unless searching upper-case (make case

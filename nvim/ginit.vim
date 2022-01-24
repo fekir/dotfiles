@@ -10,13 +10,16 @@
 " paste (CTRL-V), cut (CTRL-X), save (CTRL+S)
 :source $VIMRUNTIME/mswin.vim
 
+if has("nvim")
+	:nnoremap <silent><RightMouse>      :call GuiShowContextMenu()<CR>
+	:inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+	:xnoremap <silent><RightMouse>      :call GuiShowContextMenu()<CR>gv
+	:snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 
-:nnoremap <silent><RightMouse>      :call GuiShowContextMenu()<CR>
-:inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
-:xnoremap <silent><RightMouse>      :call GuiShowContextMenu()<CR>gv
-:snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
+	call GuiWindowMaximized(1)
 
-" Enable GUI ScrollBar
-if exists(':GuiScrollBar')
-    :GuiScrollBar 1
+	" Enable GUI ScrollBar
+	if exists(':GuiScrollBar')
+		:GuiScrollBar 1
+	endif
 endif
