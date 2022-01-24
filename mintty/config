@@ -1,6 +1,7 @@
-BoldAsFont=-1
+BoldAsFont=yes
 CtrlShiftShortcuts=yes
-CursorType=line
+CursorType=block
+CursorBlinks=no
 Term=xterm-256color
 BellType=0
 
