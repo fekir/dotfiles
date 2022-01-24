@@ -5,6 +5,8 @@
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "all",
 	"editor.wordWrap": "on",
+	"editor.detectIndentation": true,
+	"explorer.copyRelativePathSeparator": "/",
 
 	"files.associations": {
 		"*.adoc": "asciidoc"
@@ -15,6 +17,11 @@
 	"files.trimFinalNewlines": true,
 	"files.trimTrailingWhitespace": true,
 
+	"search.useIgnoreFiles": false,
+	"search.showLineNumbers": true,
+	"search.smartCase": true,
+
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Solarized Dark",
+	"workbench.colorTheme": "Monokai Dimmed",
+	"workbench.editor.wrapTabs": true,
 }
