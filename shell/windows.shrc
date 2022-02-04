@@ -43,7 +43,7 @@ alias ls="ls --color=auto --append-exe"
 
 # FIXME: create function, if -File used, use cygpath
 defender(){
-  '/cygdrive/c/Program\ Files/Windows\ Defender/MpCmdRun.exe'
+  '/cygdrive/c/Program Files/Windows Defender/MpCmdRun.exe'
 }
 
 explorer() {(
