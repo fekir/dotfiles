@@ -27,3 +27,14 @@ if has("nvim")
 	" and ctrl-v esc (mnemonic: Verbatim escape), to send esc to underlying program
 	:tnoremap <C-v><Esc> <Esc>
 endif
+
+if has("nvim")
+	" no specific changes necessary for nvim
+else
+	:map  <esc>OH <home>
+	:cmap <esc>OH <home>
+	:imap <esc>OH <home>
+	:map  <esc>OF <end>
+	:cmap <esc>OF <end>
+	:imap <esc>OF <end>
+endif
