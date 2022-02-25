@@ -47,6 +47,7 @@ endif
 if has("nvim")
 	":set inccommand=split
 else
+	:set hlsearch
 	:syntax on
 	" nvim does this automatically
 	" in vim, this causes issues from cmd
