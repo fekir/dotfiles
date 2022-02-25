@@ -41,7 +41,7 @@ endif
 :set smartcase
 
 if has('win32')
-	set shell=powershell.exe
+	set shell=powershell.exe\ -NoLogo
 	set shellxquote=
 	let &shellcmdflag = '-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command '
 	let &shellquote   = ''
