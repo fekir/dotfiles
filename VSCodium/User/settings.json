@@ -2,10 +2,12 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.cursorBlinking": "solid",
 	"editor.guides.bracketPairs": true,
-	"editor.insertSpaces": false,
+	"editor.quickSuggestions": false,
 	"editor.renderWhitespace": "all",
 	"editor.wordWrap": "on",
+	"editor.insertSpaces": false,
 	"editor.detectIndentation": true,
+
 	"explorer.copyRelativePathSeparator": "/",
 
 	"files.associations": {
@@ -21,7 +23,23 @@
 	"search.showLineNumbers": true,
 	"search.smartCase": true,
 
+
+	"terminal.integrated.enablePersistentSessions": false,
+
+	"update.mode": "none",
+
 	"window.zoomLevel": 1,
 	"workbench.colorTheme": "Monokai Dimmed",
 	"workbench.editor.wrapTabs": true,
+
+	// file specific settings
+	"[markdown]": {
+		"files.trimTrailingWhitespace": false,
+	},
+	"[asciidoc]": {
+		"editor.acceptSuggestionOnEnter": "off",
+	},
+	"[python]": {
+		"editor.insertSpaces": true,
+	},
 }
