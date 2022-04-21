@@ -1,12 +1,13 @@
 {
 	"editor.bracketPairColorization.enabled": true,
 	"editor.cursorBlinking": "solid",
+	"editor.detectIndentation": true,
+	"editor.formatOnSave": true,
 	"editor.guides.bracketPairs": true,
+	"editor.insertSpaces": false,
 	"editor.quickSuggestions": false,
 	"editor.renderWhitespace": "all",
 	"editor.wordWrap": "on",
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": true,
 
 	"explorer.copyRelativePathSeparator": "/",
 
@@ -23,13 +24,25 @@
 	"search.showLineNumbers": true,
 	"search.smartCase": true,
 
-
+	"terminal.integrated.defaultProfile.windows": "PowerShell",
 	"terminal.integrated.enablePersistentSessions": false,
+	"terminal.integrated.profiles.windows": {
+		"PowerShell": {
+			"args": [
+				"-NoLogo"
+			]
+		},
+	},
+
+	"telemetry.telemetryLevel": "off",
 
 	"update.mode": "none",
 
+	"window.newWindowDimensions": "maximized",
 	"window.zoomLevel": 1,
+
 	"workbench.colorTheme": "Monokai Dimmed",
+	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.wrapTabs": true,
 
 	// file specific settings
