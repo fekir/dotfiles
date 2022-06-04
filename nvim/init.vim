@@ -7,11 +7,6 @@ runtime fm.vim
 
 runtime view.vim
 
-" ease working with buffers, notice that gb works differently in the file
-" manager (handles bookmarks)
-:set hidden
-:nnoremap gb :ls<CR>:b
-
 " Enable mouse support
 :set mouse=a
 

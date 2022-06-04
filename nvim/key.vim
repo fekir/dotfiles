@@ -1,3 +1,8 @@
+" ease working with buffers
+" notice that gb works differently in the file manager (handles bookmarks)
+:set hidden
+:nnoremap gb :ls<CR>:b
+
 " use ctrl+s for saving, supposing that stty -ixon in *shrc
  noremap <silent> <C-S>              :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
