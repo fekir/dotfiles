@@ -2,7 +2,7 @@
 set editor="editor"
 set include = yes
 set edit_headers = yes
-set autoedit = yes
+set autoedit = no # if set to no, can autocomplete mail address with khard
 
 set text_flowed = yes                          # nice view even with 72 char limit
 set assumed_charset="utf-8"

@@ -33,3 +33,9 @@ color  tilde           brightmagenta   black
 color  body            brightyellow    black (((ht|f)tps?)|mailto):(//)?[^\ "\t]*|www\.[-a-z0-9.]+[^\ .,;\t>">]
 color  body            brightmagenta   black "[-a-z_0-9.+]+@[-a-z_0-9.]+"
 color  attachment      brightmagenta   black
+
+set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &2>/dev/null &"
+
+# default
+#set folder_format="%2C %t %N %F %2l %-8.8u %-8.8g %8s %d %i"
+set folder_format="%2C %t %N %i %F %2l %-8.8u %-8.8g %8s %d"
