@@ -1,15 +1,21 @@
 {
 	"editor.bracketPairColorization.enabled": true,
 	"editor.cursorBlinking": "solid",
-	"editor.detectIndentation": true,
-	"editor.formatOnSave": true,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": false, // makes more sense to set to true on a workspace basis
 	"editor.guides.bracketPairs": true,
 	"editor.insertSpaces": false,
-	"editor.quickSuggestions": false,
+	"editor.quickSuggestions": {
+		"comments": "off",
+		"strings": "off",
+		"other": "off"
+	},
 	"editor.renderWhitespace": "all",
 	"editor.wordWrap": "on",
+	"editor.stickyScroll.enabled": true,
 
 	"explorer.copyRelativePathSeparator": "/",
+	"extensions.autoUpdate": false,
 
 	"files.associations": {
 		"*.adoc": "asciidoc"
@@ -30,7 +36,8 @@
 		"PowerShell": {
 			"args": [
 				"-NoLogo"
-			]
+			],
+			"source": "PowerShell"
 		},
 	},
 
@@ -39,7 +46,6 @@
 	"update.mode": "none",
 
 	"window.newWindowDimensions": "maximized",
-	"window.zoomLevel": 1,
 
 	"workbench.colorTheme": "Monokai Dimmed",
 	"workbench.editor.highlightModifiedTabs": true,

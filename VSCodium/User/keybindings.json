@@ -7,4 +7,19 @@
 		"key": "ctrl+shift+t",
 		"command": "-workbench.action.reopenClosedEditor"
 	},
+
+	// unify keybinding on all platforms
+	{
+		"key": "alt+left",
+		"command": "workbench.action.navigateBack"
+	},
+	{
+		"key": "alt+right",
+		"command": "workbench.action.navigateForward"
+	},
+
+	{
+		"key": "ctrl+alt+m",
+		"command": "workbench.action.toggleMaximizedPanel"
+	}
 ]
