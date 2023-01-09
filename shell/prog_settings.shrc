@@ -49,8 +49,8 @@ CARGO_HOME="$XDG_CACHE_HOME/cargo"
 export CARGO_HOME
 
 # should probably go in config, but since I've never edited them... and some tools seem to bypass it
-JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CACHE_HOME/java"
-export JAVA_TOOL_OPTIONS
+#JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CACHE_HOME/java"
+#export JAVA_TOOL_OPTIONS
 # should probably go under XDG_CONFIG_HOME, but since I've never edited them, I'll leave the under cache for now
 #export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle" # does work only partially... lock files still in .gradle
 #export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CACHE_HOME/java"
@@ -92,3 +92,6 @@ eval "$(dircolors)"
 src_file_color="01;33"
 LS_COLORS="$LS_COLORS*.cpp=$src_file_color:*.hpp=$src_file_color:*.cxx=$src_file_color:*.hxx=$src_file_color:*.c=$src_file_color:*.h=$src_file_color:*.cmake=$src_file_color:" # c, c++
 LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
+
+# used by zsh
+TIMEFMT=$'%J: %*E real, %*U user, %*S kernel, %P cpu (times in `hh:mm:ss.ttt` format)'

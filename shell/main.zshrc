@@ -20,6 +20,7 @@ bindkey "${terminfo[home]}"  beginning-of-line
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 bindkey "^[[F" end-of-line
+bindkey '^R' history-incremental-search-backward
 
 # Enable Ctrl+x,e like on bash
 autoload -U edit-command-line
@@ -58,8 +59,6 @@ TRAPINT() { print -P -n -- '%F{red}\^C%f';return 130;}
 source_opt_file "$CURRENTDIR/history.zshrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"
-source_opt_file "$CURRENTDIR/shell.local/temp.shrc"
-source_opt_file "$CURRENTDIR/shell.local/temp.zshrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
 
 sysname=$(uname -s)

@@ -33,16 +33,22 @@ theme_git(){
   zstyle ':vcs_info:*' enable git
   setopt prompt_subst
   precmd () { vcs_info }
+  theme_default
+  local last_color="%f%E"
+  RPROMPT="$RPROMPT%F{yellow}\$vcs_info_msg_0_$last_color"
+}
 
+theme_default(){
   local user="%F{green}%n"
   local cur_location="%B%F{blue}%50<...<%~%<<%b" # truncates after 50 character with ..., and replace home with ~
 
   local prompt_tail="%F{yellow}%# "
-  local last_color="%f"
-  local check_previous_ret='%(?.%F{green}✓.%F{red}✗[%?])'
+  local last_color="%f%E"
+  local check_previous_ret='%(?..%F{red}X[%?])'
 
   PROMPT="$user $cur_location $prompt_tail$last_color"
-  RPROMPT="$check_previous_ret\$vcs_info_msg_0_$last_color"
+  if [[ ${SSH_TTY} ]]; then PROMPT="%F{magenta}[ssh:%M]%F{cyan} $PROMPT"; fi
+  RPROMPT="$check_previous_ret$last_color"
   unset THEME_MINIMAL
 }
 
