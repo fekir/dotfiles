@@ -36,6 +36,7 @@ endif
 :set smartcase
 
 if has('win32')
+	" actually, should check if posix shell not avaiable but powershell (cygwin, ...)
 	set shell=powershell.exe\ -NoLogo
 	set shellxquote=
 	let &shellcmdflag = '-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command '
@@ -43,3 +44,8 @@ if has('win32')
 	let &shellpipe    = '| Out-File -Encoding UTF8 %s'
 	let &shellredir   = '| Out-File -Encoding UTF8 %s'
 endif
+
+nnoremap ^[[1;6I :tabprevious<CR>
+nnoremap ^[[1;5I :tabnext<CR>
+inoremap ^[[1;6I <Esc>:tabprevious<CR>
+inoremap ^[[1;5I <Esc>:tabnext<CR>

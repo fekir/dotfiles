@@ -27,14 +27,15 @@ augroup END
 " space followed by tabs
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace / \+\t\|\s\+$/
-:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,conceal:*,nbsp:·
-:set showbreak=↪
 " Listchars - how to represent whitespace
 " issues with windows cmd/powershell and UTF-8
 if has('win32')
   " Not using whitespace as second char for tab, otherwise it gets confused with the normal whitespace
   :set listchars=tab:\|_,eol:¶,nbsp:~,trail:^,extends:>,precedes:<,conceal:*,nbsp:·
   :set showbreak=\\
+else
+  :set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,conceal:*,nbsp:·
+  :set showbreak=↪
 endif
 :set list
 
