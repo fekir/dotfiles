@@ -71,14 +71,15 @@
 	rm-branch-rm-on-remote = !git fetch --prune && git show-branch-rm-on-remote | xargs --no-run-if-empty git branch -d
 
 [push]
-	default = simple
-	followTags = true
+	default = current
+	#followTags = true
 
 [pull]
 	rebase = true
 
 [merge]
 	summary = true
+	ff = false
 
 [diff]
 	algorithm = patience
@@ -124,6 +125,7 @@
 
 [core]
 	fscache = true
+	preloadindex = true
 	safecrlf = false
 	autocrlf = false
 
