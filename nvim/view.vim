@@ -39,9 +39,14 @@ else
 endif
 :set list
 
-" https://vim.fandom.com/wiki/Show_fileencoding_and_bomb_in_the_status_line
 if has("statusline")
-  :set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+  " https://vim.fandom.com/wiki/Show_fileencoding_and_bomb_in_the_status_line
+  "set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+  :set statusline=%<%f\ %h%m%r " file name and if modified
+  :set statusline+=%= " right-aligned
+  :set statusline+=%{wordcount().words}\ words\| " word count
+  :set statusline+=%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}\| " encoding
+  :set statusline+=line\ %l\/%L\|column\ %c%V\|%P " ruler
 endif
 
 " show search-replace in separate window while typing
