@@ -20,7 +20,7 @@
 (set-terminal-coding-system 'utf-8-unix)
 
 ;; disable startup screen
-(setq inhibit-startup-screen t)
+;(setq inhibit-startup-screen t)
 
 ;; save history of minibuffer between instances
 (setq history-length 25)

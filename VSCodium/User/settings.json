@@ -61,4 +61,5 @@
 	"[python]": {
 		"editor.insertSpaces": true,
 	},
+	"extensions.autoUpdate": false,
 }

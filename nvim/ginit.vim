@@ -1,4 +1,4 @@
-" solarized not avaiable
+" solarized not available
 :colorscheme desert
 
 " gui should always support utf8 symbols, even on windows
@@ -21,5 +21,10 @@ if has("nvim")
 	" Enable GUI ScrollBar
 	if exists(':GuiScrollBar')
 		:GuiScrollBar 1
+	endif
+
+	" Prefer graphical tabs
+	if exists(':GuiTabLine')
+		:GuiTabline 1
 	endif
 endif

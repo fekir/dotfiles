@@ -40,13 +40,17 @@ endif
 :set list
 
 if has("statusline")
-  " https://vim.fandom.com/wiki/Show_fileencoding_and_bomb_in_the_status_line
-  "set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
-  :set statusline=%<%f\ %h%m%r " file name and if modified
+  :set statusline=%<%f
+  :set statusline+=%{&modified?\"*\":\"\"}
+  :set statusline+=%{&readonly?\"\|RO\":\"\"}
+  ":set statusline+=%{(&filetype==\"\"?\"\":\"\ \|\")}%{&filetype}
+  :set statusline+=\ %y
   :set statusline+=%= " right-aligned
-  :set statusline+=%{wordcount().words}\ words\| " word count
+  :set statusline+=%{wordcount().words}\ words\|
   :set statusline+=%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}\| " encoding
-  :set statusline+=line\ %l\/%L\|column\ %c%V\|%P " ruler
+  :set statusline+=%{&fileformat==\"dos\"?\"dos\|\":\"\"} "good enought ATM, does not show mac
+  ":set statusline+=%{&fileformat==\"unix\"?\"\":&fileformat\|} " does not work as expected
+  :set statusline+=ln\ %l\/%L\|col\ %c%V\|%P " ruler
 endif
 
 " show search-replace in separate window while typing
