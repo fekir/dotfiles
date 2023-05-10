@@ -19,8 +19,8 @@ scriptencoding utf-8
 " switch to nonrelative when focus lost -> breaks welcome screen
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
-  autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
+  autocmd BufEnter,FocusGained,WinEnter * if &nu && ! &rnu | set rnu   | endif
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu &&   &rnu | set nornu | endif
 augroup END
 
 " mark "extra" whitespace as error, ie trailing whitespace of any kind, and
