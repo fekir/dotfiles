@@ -1,14 +1,13 @@
 " solarized not available
 :colorscheme desert
 
-" gui should always support utf8 symbols, even on windows
-:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-:set showbreak=↪
-
 " mswin defines most keybindings used in graphical text editors,
 " like undo (CTRL-Z), redo (CTRL-Y), select all (CTRL-A), copy (CTRL-C)
 " paste (CTRL-V), cut (CTRL-X), save (CTRL+S)
 :source $VIMRUNTIME/mswin.vim
+
+:set title titlestring=%F
+:set mouse=a
 
 if has("nvim")
 	:nnoremap <silent><RightMouse>      :call GuiShowContextMenu()<CR>
@@ -27,4 +26,8 @@ if has("nvim")
 	if exists(':GuiTabLine')
 		:GuiTabline 1
 	endif
+
+	" gui in nvim should always support utf8 symbols, even on windows
+	:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+	:set showbreak=↪
 endif

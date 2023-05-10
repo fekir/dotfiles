@@ -26,9 +26,11 @@ augroup END
 " mark "extra" whitespace as error, ie trailing whitespace of any kind, and
 " space followed by tabs
 :highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace / \+\t\|\s\+$/
+if exists(":match") " missing from minimal vim installations
+	:match ExtraWhitespace / \+\t\|\s\+$/
+endif
 " Listchars - how to represent whitespace
-" issues with windows cmd/powershell and UTF-8
+" still have open issues with windows cmd/powershell and UTF-8
 if has('win32')
   " Not using whitespace as second char for tab, otherwise it gets confused with the normal whitespace
   :set listchars=tab:\|_,eol:¶,nbsp:~,trail:^,extends:>,precedes:<,conceal:*,nbsp:·
@@ -57,6 +59,7 @@ endif
 if has("nvim")
 	":set inccommand=split
 else
+	:set laststatus=2
 	:set hlsearch
 	:syntax on
 	" nvim does this automatically

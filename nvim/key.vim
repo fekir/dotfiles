@@ -14,7 +14,7 @@ inoremap <expr> <C-F> "\<C-\>\<C-O>/"
 cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
 " scroll up/down by screen line and not by logical line
-" does not work in edit mode
+" but only in insert mode
 :map <up> gk
 :map <down> gj
 
@@ -42,4 +42,15 @@ else
 	:map  <esc>OF <end>
 	:cmap <esc>OF <end>
 	:imap <esc>OF <end>
+
+	if has("gui_running") " gvim
+	else
+		" https://vi.stackexchange.com/questions/11668/control-arrow-to-skip-over-text
+		" ctrl+arrow does not work oob in insert and esc mode
+		" seems that TERM=screen-color and TERM!=xterm causes this issue
+		:execute "set <xUp>=\e[1;*A"
+		:execute "set <xDown>=\e[1;*B"
+		:execute "set <xRight>=\e[1;*C"
+		:execute "set <xLeft>=\e[1;*D"
+	endif
 endif
