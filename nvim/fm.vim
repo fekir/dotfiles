@@ -8,12 +8,12 @@ else
 	if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
 	if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
 
-	:let g:netrw_home=$XDG_CACHE_HOME.'/nvim/'
+	:let g:netrw_home=$XDG_CACHE_HOME.'/vim/'
 
-	:set directory="$XDG_CACHE_HOME/vim/swap//" | call mkdir(&directory, 'p')
-	:set backupdir="$XDG_CACHE_HOME/vim/backup//" | call mkdir(&backupdir, 'p')
-	:set undodir="$XDG_DATA_HOME/nvim/undo//" | call mkdir(&undodir,   'p')
-	:set viewdir="$XDG_DATA_HOME/nvim/view//" | call mkdir(&undodir,   'p')
+	:set directory=$XDG_CACHE_HOME/vim/swap//   | call mkdir(&directory, 'p')
+	:set backupdir=$XDG_CACHE_HOME/vim/backup// | call mkdir(&backupdir, 'p')
+	:set undodir=$XDG_DATA_HOME/nvim/undo//     | call mkdir(&undodir,   'p')
+	:set viewdir=$XDG_DATA_HOME/nvim/view//     | call mkdir(&undodir,   'p')
 endif
 
 " remove banner

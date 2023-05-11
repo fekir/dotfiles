@@ -21,13 +21,14 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 if has("nvim")
 	set diffopt+=algorithm:patience
 else
-	" causes issues wit vim called from cmd/directly (or powershell inside cmd), works in ps, git-bash and cygwin (+tmux, +zsh)
-	if has("unix")
-		" in powershell seems to change automatically
+	if has("win32")
+		" and !has("win32unix")
+		" vim in cygwin and git-bash work out of the box
 		let &t_SI = "\<esc>[5 q"
-		let &t_SR = "\<esc>[5 q"
 		let &t_EI = "\<esc>[2 q"
 	endif
+	" prefer underline when in replace mode
+	let &t_SR = "\<esc>[4 q"
 endif
 
 " search settings, case insensitive unless searching upper-case (make case
@@ -43,9 +44,10 @@ if has('win32')
 	let &shellquote   = ''
 	let &shellpipe    = '| Out-File -Encoding UTF8 %s'
 	let &shellredir   = '| Out-File -Encoding UTF8 %s'
-endif
+	if has("gui_running") " gvim
+		:set noshelltemp " do not open separate cmd window when executed from gvim
+	endif
 
-nnoremap ^[[1;6I :tabprevious<CR>
-nnoremap ^[[1;5I :tabnext<CR>
-inoremap ^[[1;6I <Esc>:tabprevious<CR>
-inoremap ^[[1;5I <Esc>:tabnext<CR>
+	" prefer for new/empty buffer \n to \r\n also on Windows
+	set fileformats=unix,dos
+endif
