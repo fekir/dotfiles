@@ -20,6 +20,9 @@ runtime spell.vim
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 if has("nvim")
 	set diffopt+=algorithm:patience
+	if has('nvim-0.9')
+		set diffopt+=linematch:60
+	endif
 else
 	if has("win32")
 		" and !has("win32unix")
