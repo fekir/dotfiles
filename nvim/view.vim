@@ -16,7 +16,7 @@ scriptencoding utf-8
 :highlight clear CursorLine
 :set cursorline
 
-" switch to nonrelative when focus lost -> breaks welcome screen
+" switch to nonrelative when focus lost
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,WinEnter * if &nu && ! &rnu | set rnu   | endif
@@ -55,19 +55,17 @@ if has("statusline")
   :set statusline+=ln\ %l\/%L\|col\ %c%V\|%P " ruler
 endif
 
-" show search-replace in separate window while typing
 if has("nvim")
+	" show search-replace in separate window while typing
 	":set inccommand=split
 else
 	:set laststatus=2
 	:set hlsearch
 	:syntax on
-	" nvim does this automatically
-	" in vim, this causes issues from cmd
-	" powershell/gvim seem to change cursor automatically
-	if has("unix")
-		let &t_SI = "\<esc>[5 q"
-		let &t_SR = "\<esc>[5 q"
-		let &t_EI = "\<esc>[2 q"
-	endif
+	" disable blinking
+	:set guicursor+=a:blinkon0
+	" escape sequence works in gvim/cmd/powershell/tmux too
+	:let &t_SI = "\<esc>[6 q" " non-blinking I for insert mode
+	:let &t_SR = "\<esc>[4 q" " non-blinking underline for replace mode
+	:let &t_EI = "\<esc>[2 q" " non blinking block for everything else (might not match with cursor in normal mode at start)
 endif

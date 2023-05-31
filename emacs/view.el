@@ -19,3 +19,16 @@
   (invert-face 'default)
   (set-variable 'frame-background-mode 'dark)
 )
+
+;; disable startup screen if any argument given to Emacs
+(when (cdr command-line-args)
+  (setq inhibit-startup-screen t))
+
+; M-x compile settings
+; auto-scroll when using M-x compile
+(setq compilation-scroll-output 1)
+; support for colored output:
+;  https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
+(setq-default frame-title-format '("%b"))

@@ -18,7 +18,9 @@
 	"extensions.autoUpdate": false,
 
 	"files.associations": {
-		"*.adoc": "asciidoc"
+		"*.adoc": "asciidoc",
+		"*,md": "markdown",
+		"*.py": "python"
 	},
 	"files.autoSave": "off",
 	"files.autoGuessEncoding": true,
@@ -61,5 +63,4 @@
 	"[python]": {
 		"editor.insertSpaces": true,
 	},
-	"extensions.autoUpdate": false,
 }

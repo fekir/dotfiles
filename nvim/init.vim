@@ -23,15 +23,6 @@ if has("nvim")
 	if has('nvim-0.9')
 		set diffopt+=linematch:60
 	endif
-else
-	if has("win32")
-		" and !has("win32unix")
-		" vim in cygwin and git-bash work out of the box
-		let &t_SI = "\<esc>[5 q"
-		let &t_EI = "\<esc>[2 q"
-	endif
-	" prefer underline when in replace mode
-	let &t_SR = "\<esc>[4 q"
 endif
 
 " search settings, case insensitive unless searching upper-case (make case

@@ -34,5 +34,16 @@
 	{
 		"key": "ctrl+alt+m",
 		"command": "workbench.action.toggleMaximizedPanel"
+	},
+
+	{
+		"key": "f3",
+		"command": "-workbench.action.terminal.findNext",
+		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "shift+f3",
+		"command": "-workbench.action.terminal.findPrevious",
+		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	}
 ]
