@@ -1,8 +1,15 @@
+;; load custom config files
+
+
+(load "~/.config/emacs/functions.el")
 (load "~/.config/emacs/view.el")
 (load "~/.config/emacs/keys.el")
 
 ;; ------------------------------------
 ;; behavioural changes
+
+(setq scroll-step 1) ; scroll like other applications
+(setq scroll-margin 3)
 
 ;; use utf-8 by default for reading and writing, Windows included
 (set-language-environment "UTF-8")

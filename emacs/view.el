@@ -11,6 +11,19 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
+; hide line numbers in shell, compile, as it causes significant slowdown
+(defun fek-inhibit-global-linum-mode ()
+	(add-hook 'after-change-major-mode-hook
+		(lambda ()
+			(display-line-numbers-mode 0)
+			;(linum-mode 0)
+		)
+		:append :local
+	)
+)
+(add-hook 'compilation-mode-hook 'fek-inhibit-global-linum-mode)
+(add-hook 'term-mode-hook 'fek-inhibit-global-linum-mode)
+
 ;; remove toolbar (big gnome-like icons, menu bar should be sufficient)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
@@ -31,4 +44,8 @@
 ;  https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
+;; syntax highlighting by default
+(require 'generic-x)
+
+;; show file name in titlebar
 (setq-default frame-title-format '("%b"))
