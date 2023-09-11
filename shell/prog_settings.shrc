@@ -95,3 +95,8 @@ LS_COLORS="$LS_COLORS*.java=$src_file_color" # java
 
 # used by zsh
 TIMEFMT=$'%J: %*E real, %*U user, %*S kernel, %P cpu (times in `hh:mm:ss.ttt` format)'
+
+# disable menu builder by default for all wine instances
+export WINEDLLOVERRIDES=winemenubuilder.exe=d
+# force to set per application a valid wineprefix
+export WINEPREFIX=/nop
