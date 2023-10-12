@@ -5,30 +5,24 @@
 ;; cursor like in other graphical/non-modal editors; a bar instead of a box
 (setq-default cursor-type 'bar)
 
-;; show line numbers by default
-;(global-linum-mode)
-;; show relative line numbers by default
-(global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'relative)
-
-; hide line numbers in shell, compile, as it causes significant slowdown
-(defun fek-inhibit-global-linum-mode ()
-	(add-hook 'after-change-major-mode-hook
-		(lambda ()
-			(display-line-numbers-mode 0)
-			;(linum-mode 0)
-		)
-		:append :local
-	)
-)
-(add-hook 'compilation-mode-hook 'fek-inhibit-global-linum-mode)
-(add-hook 'term-mode-hook 'fek-inhibit-global-linum-mode)
+(defun fek-file-view ()
+  "change view for real file: line numbers, trailing space, ...
+Do not do it for compilation/term mode as it has performance issue
+Also in calendar it looks bad
+"
+  (setq show-trailing-whitespace t)
+  ;; show line numbers
+  (setq display-line-numbers-type 'relative)
+  (display-line-numbers-mode 1)
+  (setq indicate-empty-lines t)
+  )
+(add-hook 'find-file-hook 'fek-file-view)
 
 ;; remove toolbar (big gnome-like icons, menu bar should be sufficient)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
-;; dark mode by default
-(when (display-graphic-p) ; detect if graphic or terminal emacs
+;; dark mode by default on graphical emacs
+(when (display-graphic-p)
   (invert-face 'default)
   (set-variable 'frame-background-mode 'dark)
 )
@@ -37,9 +31,12 @@
 (when (cdr command-line-args)
   (setq inhibit-startup-screen t))
 
+; really slow, at least on windows
+; https://emacs.stackexchange.com/questions/52227/emacs-shell-slow-compile
 ; M-x compile settings
 ; auto-scroll when using M-x compile
-(setq compilation-scroll-output 1)
+;(setq compilation-scroll-output 'first-error) ; does not seem to work
+(setq compilation-scroll-output t)
 ; support for colored output:
 ;  https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
