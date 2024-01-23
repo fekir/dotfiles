@@ -23,13 +23,17 @@ Also in calendar it looks bad
 
 ;; dark mode by default on graphical emacs
 (when (display-graphic-p)
-  (invert-face 'default)
-  (set-variable 'frame-background-mode 'dark)
+  (load-theme 'tango-dark)
+  ;;(load-theme 'wombat)
+  ;; in case theme is not available
+  ;; (invert-face 'default)
+  ;;(set-variable 'frame-background-mode 'dark)
 )
 
 ;; disable startup screen if any argument given to Emacs
 (when (cdr command-line-args)
-  (setq inhibit-startup-screen t))
+  (setq inhibit-startup-screen t)
+)
 
 ; really slow, at least on windows
 ; https://emacs.stackexchange.com/questions/52227/emacs-shell-slow-compile
@@ -41,8 +45,12 @@ Also in calendar it looks bad
 ;  https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
-;; syntax highlighting by default
+;; syntax highlighting for all languages by default
+;; https://www.emacswiki.org/emacs/GenericMode
 (require 'generic-x)
 
 ;; show file name in titlebar
 (setq-default frame-title-format '("%b"))
+
+;; (add-hook 'compilation-mode-hook 'fek-inhibit-global-linum-mode)
+;; (add-hook 'term-mode-hook 'fek-inhibit-global-linum-mode)

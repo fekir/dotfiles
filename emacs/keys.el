@@ -33,6 +33,10 @@
 (global-set-key (kbd "C-, C-w") 'tab-close)
 (global-set-key (kbd "C-, C-c") 'compile)
 (global-set-key (kbd "C-, C-g") 'goto-line)
+(global-set-key (kbd "C-, C-f") (lambda ()
+				  (interactive)
+				  (let (last-nonmenu-event)
+				    (menu-find-file-existing))))
 
 ;; ctrl-c for stopping compilation, but only when buffer has focus
 (defun my-kill-compilation ()

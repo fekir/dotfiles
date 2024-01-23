@@ -8,8 +8,10 @@
 ;; ------------------------------------
 ;; behavioural changes
 
-(setq scroll-step 1) ; scroll like other applications
-(setq scroll-margin 3)
+(when scroll-bar-mode
+   (setq scroll-step 1) ; scroll like other applications
+   (setq scroll-margin 3)
+)
 ;; (setq pixel-scroll-precision-mode t) ; scroll by pixel and not lines, might be useful for images
 
 ;; use utf-8 by default for reading and writing, Windows included
@@ -18,7 +20,7 @@
 (set-keyboard-coding-system 'utf-8-unix)
 (set-terminal-coding-system 'utf-8-unix)
 
-;; files end with newline
+;; files should end with newline
 (setq require-final-newline t)
 
 ;; save history of minibuffer between instances
