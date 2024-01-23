@@ -100,3 +100,7 @@ TIMEFMT=$'%J: %*E real, %*U user, %*S kernel, %P cpu (times in `hh:mm:ss.ttt` fo
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 # force to set per application a valid wineprefix
 export WINEPREFIX=/nop
+
+# settings for fzf
+export FZF_CTRL_R_OPTS="--reverse"  # better match first position
+export FZF_TMUX_OPTS="-p" # prefer tmux popup

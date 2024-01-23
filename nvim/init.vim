@@ -1,5 +1,8 @@
 
 runtime fm.vim
+if filereadable('/usr/share/doc/fzf/examples/fzf.vim')
+	source /usr/share/doc/fzf/examples/fzf.vim
+end
 
 " Set tab width to 4 spaces (no replace)
 :set tabstop=4

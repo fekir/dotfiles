@@ -60,6 +60,10 @@ source_opt_file "$CURRENTDIR/history.zshrc"
 source_opt_file "$CURRENTDIR/common_aliases.shrc"
 source_opt_file "$CURRENTDIR/prog_settings.shrc"
 source_opt_file "$CURRENTDIR/theme.zshrc"
+source_opt_file /usr/share/doc/fzf/examples/key-bindings.zsh
+source_opt_file /usr/share/doc/fzf/examples/completion.zsh
+source_opt_file /etc/profile.d/fzf.zsh
+source_opt_file /etc/profile.d/fzf-completion.zsh
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" = "CYGWIN_NT" ] || [ "${sysname:0:10}" = "MINGW32_NT" ] || [ "${sysname:0:10}" = "MINGW64_NT" ] || [ "${sysname:0:7}" = "MSYS_NT" ]; then :;

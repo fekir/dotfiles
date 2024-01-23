@@ -31,6 +31,7 @@ source_opt_file "$CURRENTDIR/prog_settings.shrc"
 source_opt_file "$CURRENTDIR/shell.local/temp.shrc"
 source_opt_file "$CURRENTDIR/shell.local/temp.bashrc"
 source_opt_file "$CURRENTDIR/theme.bashrc"
+source_opt_file "/usr/share/doc/fzf/examples/key-bindings.bash"
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" == "CYGWIN_NT" ] || [ "${sysname:0:10}" == "MINGW32_NT" ] || [ "${sysname:0:10}" == "MINGW64_NT" ] || [ "${sysname:0:7}" == "MSYS_NT" ]; then :;
