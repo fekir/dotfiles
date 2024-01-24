@@ -2,8 +2,9 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.cursorBlinking": "solid",
 	"editor.detectIndentation": false,
-	"editor.formatOnSave": false, // makes more sense to set to true on a workspace basis
+	"editor.formatOnSave": false,
 	"editor.guides.bracketPairs": true,
+	"editor.hover.sticky": false,
 	"editor.insertSpaces": false,
 	"editor.quickSuggestions": {
 		"comments": "off",
@@ -11,19 +12,21 @@
 		"other": "off"
 	},
 	"editor.renderWhitespace": "all",
-	"editor.wordWrap": "on",
 	"editor.stickyScroll.enabled": true,
+	"editor.wordWrap": "on",
 
 	"explorer.copyRelativePathSeparator": "/",
 	"extensions.autoUpdate": false,
 
+	"git.confirmSync": false,
+
 	"files.associations": {
 		"*.adoc": "asciidoc",
-		"*,md": "markdown",
+		"*.md": "markdown",
 		"*.py": "python"
 	},
-	"files.autoSave": "off",
 	"files.autoGuessEncoding": true,
+	"files.autoSave": "off",
 	"files.insertFinalNewline": true,
 	"files.trimFinalNewlines": true,
 	"files.trimTrailingWhitespace": true,
@@ -40,7 +43,7 @@
 				"-NoLogo"
 			],
 			"source": "PowerShell"
-		},
+		}
 	},
 
 	"telemetry.telemetryLevel": "off",
@@ -53,14 +56,13 @@
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.wrapTabs": true,
 
-	// file specific settings
 	"[markdown]": {
-		"files.trimTrailingWhitespace": false,
+		"files.trimTrailingWhitespace": false
 	},
 	"[asciidoc]": {
-		"editor.acceptSuggestionOnEnter": "off",
+		"editor.acceptSuggestionOnEnter": "off"
 	},
 	"[python]": {
-		"editor.insertSpaces": true,
+		"editor.insertSpaces": true
 	},
 }
