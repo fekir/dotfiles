@@ -28,10 +28,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-CURRENTDIR=${0:h}
-
 # not optional, defines source_opt_file
-. "$CURRENTDIR/common_functions.shrc"
+. "${0:h}/common_functions.shrc"
 
 detect_term
 
@@ -56,10 +54,10 @@ stty -ixon
 TRAPINT() { print -P -n -- '%F{red}\^C%f';return 130;}
 
 # optionals
-source_opt_file "$CURRENTDIR/history.zshrc"
-source_opt_file "$CURRENTDIR/common_aliases.shrc"
-source_opt_file "$CURRENTDIR/prog_settings.shrc"
-source_opt_file "$CURRENTDIR/theme.zshrc"
+source_opt_file "${0:h}/history.zshrc"
+source_opt_file "${0:h}/common_aliases.shrc"
+source_opt_file "${0:h}/prog_settings.shrc"
+source_opt_file "${0:h}/theme.zshrc"
 source_opt_file /usr/share/doc/fzf/examples/key-bindings.zsh
 source_opt_file /usr/share/doc/fzf/examples/completion.zsh
 source_opt_file /etc/profile.d/fzf.zsh
@@ -67,7 +65,7 @@ source_opt_file /etc/profile.d/fzf-completion.zsh
 
 sysname=$(uname -s)
 if [ "${sysname:0:9}" = "CYGWIN_NT" ] || [ "${sysname:0:10}" = "MINGW32_NT" ] || [ "${sysname:0:10}" = "MINGW64_NT" ] || [ "${sysname:0:7}" = "MSYS_NT" ]; then :;
-  source_opt_file "$CURRENTDIR/windows.shrc"
+  source_opt_file "${0:h}/windows.shrc"
 fi
 
 source_opt_file '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
