@@ -17,6 +17,9 @@ define_alias_ifndef 'e' 'vim' 'vim'
 define_alias_ifndef 'tigref' 'git reflog --pretty=raw | tig --pretty=raw' 'tig'
 define_alias_ifndef 'ncdu-annex' 'ncdu --color=dark -x --follow-symlinks --exclude=".git"' 'ncdu'
 
+# store result in mucis directory by default
+define_alias_opt 'abcde' 'abcde' 'mkdir -p ~/Music/abcde; cd ~/Music/abcde; abcde -o opus'
+
 # wget
 alias wget='wget -c'
 
@@ -29,6 +32,11 @@ grep --color --help >/dev/null 2>/dev/null && alias grep='grep --color=auto'
 
 # nano, add "set linenumbers" in .nanorc for better line numbers support
 define_alias_opt 'nano' 'nano' 'nano -c'
+
+# mc when quitting, exit in mc CWD
+if command -v mc > /dev/null 2>&1 && [ -f /usr/lib/mc/mc-wrapper.sh ]; then
+  alias mc='source /usr/lib/mc/mc-wrapper.sh'
+fi
 
 # gp
 define_alias_opt 'gp' 'gp' "gp --quiet --default histfile=\"${XDG_CACHE_HOME:-$HOME/.cache}/gp_history\""
