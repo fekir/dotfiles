@@ -1,8 +1,11 @@
 [Midnight-Commander]
 skin=xoria256
+shadows=false
+editor_ask_filename_before_edit=true
 auto_save_setup=false
 
 [Layout]
+message_visible=false
 
 [Misc]
 
@@ -10,5 +13,6 @@ auto_save_setup=false
 
 [Panels]
 show_mini_info=false
+show_dot_files=false
 
 [Panelize]

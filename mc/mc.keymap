@@ -1,0 +1,8 @@
+[filemanager]
+Delete = f8; del
+HotList = ctrl-backslash; alt-b
+
+[panel]
+HistoryNext = alt-u; alt-kpright
+HistoryPrev = alt-y; alt-kpleft
+CdParent = ctrl-pgup; alt-kpup
