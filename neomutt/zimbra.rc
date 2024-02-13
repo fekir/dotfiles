@@ -1,23 +1,28 @@
 # define
 # set imap_user = "john.doe"
 # set realname  = "John Doe"
+# set hostname  = "company.com"
 # optionally define
 # set imap_pass = "Password"
 
-set hostname = "gmail.com" # also used for creating the message-id (other clients use it so lets be consistent)
-
-set smtp_url = "smtps://$imap_user@smtp.$hostname:465/"
+set smtp_url = "smtps://$imap_user@mail.$hostname:465/"
 set smtp_pass = $imap_pass
 set from = "$realname <$imap_user@$hostname>"
-set folder = "imaps://imap.$hostname:993"
+set folder = "imaps://mail.$hostname"
 set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set trash     = "+[Gmail]/Trash"
-unset record  # Gmail automatically saves sent e-mail to Sent, we do not want duplicates.
+set postponed = "+Drafts"
+set trash     = "+Trash"
+set record    = "+Sent"
+
+set copy = "yes" # Save sent mail on Zimbra
+set reverse_alias="yes" # If email is saved in your alias file, show the name of the mail  ????
 
 # mailboxes are shown in the sidebar, imap_check_subscribed loads them all
+#mailboxes +INBOX +Sent
+mailboxes +INBOX # otherwise not shown
 set imap_check_subscribed
 
+set ssl_starttls = yes
 set ssl_force_tls = yes
 
 set move = no # do not move messages to another folder

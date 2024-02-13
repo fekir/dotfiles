@@ -3,17 +3,21 @@
 # set realname  = "John Doe"
 # optionally define
 # set imap_pass = "Password"
+# set from = "alias <alias@domain>" (after sourcing this file)
 
-set hostname = "gmail.com" # also used for creating the message-id (other clients use it so lets be consistent)
+set hostname = "mailbox.org" # also used for creating the message-id (other clients use it so lets be consistent)
 
+set from = "$realname <$imap_user@$hostname>"
+set imap_user="$imap_user@mailbox.org"
 set smtp_url = "smtps://$imap_user@smtp.$hostname:465/"
 set smtp_pass = $imap_pass
-set from = "$realname <$imap_user@$hostname>"
+
 set folder = "imaps://imap.$hostname:993"
 set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set trash     = "+[Gmail]/Trash"
-unset record  # Gmail automatically saves sent e-mail to Sent, we do not want duplicates.
+set record = "+INBOX"
+folder-hook . 'set record=^' # from https://neomutt.org/guide/advancedusage.html, use same folder where replying to store message
+set postponed = "+Drafts"
+set trash     = "+Trash"
 
 # mailboxes are shown in the sidebar, imap_check_subscribed loads them all
 set imap_check_subscribed
