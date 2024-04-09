@@ -13,6 +13,10 @@
 :inoremap <expr> <C-F> "\<C-\>\<C-O>/"
 :cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
+" use F10 for closing, like mc
+:      map <F10> <esc>:confirm quitall<enter>
+: inoremap <F10> <esc>:confirm quitall<enter>
+
 " scroll up/down by screen line and not by logical line
 " but only in insert mode
 :map <up> gk
