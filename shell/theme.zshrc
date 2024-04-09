@@ -47,6 +47,7 @@ theme_default(){
   local check_previous_ret='%(?..%F{red}X[%?])'
 
   PROMPT="$user $cur_location $prompt_tail$last_color"
+  if [ "$+MC_SID" = "1" ] ; then PROMPT="%F{blue}MC $PROMPT"; fi
   if [[ ${SSH_TTY} ]]; then PROMPT="%F{magenta}[ssh:%M]%F{cyan} $PROMPT"; fi
   RPROMPT="$check_previous_ret$last_color"
   unset THEME_MINIMAL
