@@ -14,13 +14,14 @@
 :cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
 " use F10 for closing, like mc
-:      map <F10> <esc>:confirm quitall<enter>
-: inoremap <F10> <esc>:confirm quitall<enter>
+: noremap <F10>      :confirm quitall<enter>
+:inoremap <F10> <esc>:confirm quitall<enter>
+:cnoremap <F10> <esc>:confirm quitall<enter>
 
 " scroll up/down by screen line and not by logical line
 " but only in insert mode
-:map <up> gk
-:map <down> gj
+:noremap <up>   gk
+:noremap <down> gj
 
 " use U for undoing undo (redo)
 " prevent to use U by accident to introduce new change
@@ -28,7 +29,8 @@
 
 " newline from normal mode
 :nnoremap ,o o<esc>
-:nnoremap ,p :set number!<enter>:set relativenumber!<enter>:set list!<enter>
+" missing showbreak
+:nnoremap <silent> ,p :set number!<enter>:set relativenumber!<enter>:set list!<enter>
 
 if exists(':nohlsearch')
 	" missing on vim.tiny
@@ -42,17 +44,17 @@ if has("nvim")
 	:tnoremap <Esc> <C-\><C-n>
 	" and ctrl-v esc (mnemonic: Verbatim Escape), to send esc to underlying program
 	:tnoremap <C-v><Esc> <Esc>
-endif
 
-if has("nvim")
-	" no specific changes necessary for nvim
+	" relevant only for windows in cmd/powershell
+	if has('win32')
+		:execute 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+	endif
+
 else
-	: map <esc>OH <home>
-	:cmap <esc>OH <home>
-	:imap <esc>OH <home>
-	: map <esc>OF <end>
-	:cmap <esc>OF <end>
-	:imap <esc>OF <end>
+	: noremap <esc>OH <home>
+	:lnoremap <esc>OH <home>
+	: noremap <esc>OF <end>
+	:lnoremap <esc>OF <end>
 
 	if has("gui_running") " gvim
 	else
