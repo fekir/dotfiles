@@ -1,3 +1,16 @@
+" To keep vim and nvim in sync
+" ln -s ~/.config/nvim/ ~/.vim
+" on windows, for covering "native" and cygwin-like
+" junction C:\Users\xxx\.vim C:\Users\xxx\.config\nvim\
+" junction C:\Users\xxx\vimfiles C:\Users\xxx\.config\nvim\
+" junction C:\Users\xxx\AppData\Local\nvim C:\Users\xxx\.config\nvim\
+" (also mklink /J from cmd works)
+" from vimrc:
+"     :source ~/.config/nvim/init.vim
+" from gvimrc:
+"     :source ~/.config/nvim/init.vim
+"     :source ~/.config/nvim/ginit.vim
+
 
 runtime fm.vim
 if filereadable('/usr/share/doc/fzf/examples/fzf.vim')

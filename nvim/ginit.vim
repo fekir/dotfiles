@@ -30,6 +30,12 @@ if has("nvim")
 	" gui in nvim should always support utf8 symbols, even on windows
 	:set listchars=tab:‣·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 	:set showbreak=↪
+elseif has("gui_running") " gvim
+	if has('win32')
+		:set guifont=Consolas:h13
+		" gvim, windows only: https://vi.stackexchange.com/questions/1937/how-do-i-get-gvim-to-start-maximised-in-windows
+		autocmd GUIEnter * simalt ~x
+	endif
 endif
 
 " tab navigation with ctrl+tab
