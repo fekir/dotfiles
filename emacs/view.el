@@ -4,6 +4,8 @@
 (blink-cursor-mode -1)
 ;; cursor like in other graphical/non-modal editors; a bar instead of a box
 (setq-default cursor-type 'bar)
+;; wrap lines by word and not character
+(setq-default word-wrap t)
 
 (defun fek-file-view ()
   "change view for real file: line numbers, trailing space, ...

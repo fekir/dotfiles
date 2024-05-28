@@ -16,6 +16,10 @@ scriptencoding utf-8
 :highlight clear CursorLine
 :set cursorline
 
+" visually wrap long lines, but do not split words in the middle
+:set wrap
+:set linebreak
+
 " switch to nonrelative when focus lost
 augroup numbertoggle
   autocmd!
