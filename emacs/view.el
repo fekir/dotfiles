@@ -34,8 +34,10 @@ Also in calendar it looks bad
 
 ;; disable startup screen if any argument given to Emacs
 (when (cdr command-line-args)
-  (setq inhibit-startup-screen t)
+	(setq inhibit-startup-screen t)
 )
+;; show some help
+(add-hook 'after-init-hook 'help-quick)
 
 ; really slow, at least on windows
 ; https://emacs.stackexchange.com/questions/52227/emacs-shell-slow-compile
@@ -51,8 +53,10 @@ Also in calendar it looks bad
 ;; https://www.emacswiki.org/emacs/GenericMode
 (require 'generic-x)
 
-;; show file name in titlebar
-(setq-default frame-title-format '("%b"))
+;; show file name in title bar
+(setq frame-title-format
+	'(:eval (if (buffer-file-name)(abbreviate-file-name (buffer-file-name))"%b"))
+)
 
 ;; (add-hook 'compilation-mode-hook 'fek-inhibit-global-linum-mode)
 ;; (add-hook 'term-mode-hook 'fek-inhibit-global-linum-mode)
