@@ -17,5 +17,5 @@ set user_agent = no
 set abort_noattach = no
 # Search for the following regular expression in the body of the email
 # English: attach, attached, attachment, attachments
-set abort_noattach_regex = "\\<attach(|ed|ments?)\\>"
+set abort_noattach_regex = "\<(attach|attached|attachments?|anhang|allegato)\>"
 # set abort_noattach_regex = "\\<(anhängen|angehängt|anhang|anhänge|hängt an)\\>"
