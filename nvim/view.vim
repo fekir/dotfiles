@@ -9,12 +9,12 @@ scriptencoding utf-8
 :set relativenumber
 
 " highlight current one
-:highlight CursorLineNr cterm=bold ctermfg=012
+":highlight CursorLineNr cterm=bold ctermfg=012
 ":highlight LineNr cterm=bold ctermfg=012 " applies to all lines :-( should fill a bug?
 " FIXME CursorLineNr should works without setting cursorline, but then only with relativenumber
 " thus remove underline
-:highlight clear CursorLine
-:set cursorline
+":highlight clear CursorLine
+":set cursorline
 
 " visually wrap long lines, but do not split words in the middle
 :set wrap

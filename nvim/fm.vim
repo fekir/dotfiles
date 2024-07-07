@@ -12,8 +12,10 @@ else
 
 	:set directory=$XDG_CACHE_HOME/vim/swap//   | call mkdir(&directory, 'p')
 	:set backupdir=$XDG_CACHE_HOME/vim/backup// | call mkdir(&backupdir, 'p')
-	:set undodir=$XDG_DATA_HOME/nvim/undo//     | call mkdir(&undodir,   'p')
-	:set viewdir=$XDG_DATA_HOME/nvim/view//     | call mkdir(&viewdir,   'p')
+	:set undodir=$XDG_DATA_HOME/vim/undo//      | call mkdir(&undodir,   'p')
+	:set viewdir=$XDG_DATA_HOME/vim/view//      | call mkdir(&viewdir,   'p')
+
+	set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 endif
 
 " remove banner

@@ -6,7 +6,7 @@
 " use ctrl+s for saving, supposing that stty -ixon in *shrc
 : noremap <silent> <C-S>      :update<CR>
 :vnoremap <silent> <C-S> <C-C>:update<CR>
-:inoremap <silent> <C-S> <C-O>:update<CR>
+:inoremap <silent> <C-S> <Esc>:update<CR>gi
 
 " use CTRL-F for searching
 : noremap <expr> <C-F> "/"
@@ -17,6 +17,10 @@
 : noremap <F10>      :confirm quitall<enter>
 :inoremap <F10> <esc>:confirm quitall<enter>
 :cnoremap <F10> <esc>:confirm quitall<enter>
+
+" use ctrl+w for managing windows also in insert mode
+" unfortunately exits from insert mode
+:inoremap <C-w> <esc><C-w>
 
 " scroll up/down by screen line and not by logical line
 " but only in insert mode
