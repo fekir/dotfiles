@@ -15,16 +15,7 @@
 "     :source ~/.config/nvim/init.vim
 "     :source ~/.config/nvim/ginit.vim
 
-" not sure what correct values are, and if can query those at runtime
-if has('nvim')
-	" https://neovim.io/doc/user/usr_45.html
-	:language C
-	" maybe also for gvim
-	:set langmenu=none
-else
-	let $LANG = 'en_US'
-	set langmenu=en_US
-endif
+:language en_US.utf8
 
 runtime fm.vim
 if filereadable('/usr/share/doc/fzf/examples/fzf.vim')

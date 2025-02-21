@@ -112,7 +112,7 @@
 	ui = true
 
 [help]
-	autocorrect = 30
+	autocorrect = prompt
 
 [i18n]
 	commitEncoding = UTF-8

@@ -2,9 +2,7 @@
 
 # optionally sources one file (if exists)
 source_opt_file() {
-  if [ -f "$1" ]; then
-    . "$1"
-  fi
+  if [ -f "$1" ]; then :; . "$1"; fi
 }
 
 swap() {
@@ -20,18 +18,8 @@ swap() {
   mv "$1" "$tmpfile" && mv "$2" "$1" &&  mv "$tmpfile" "$2"
 }
 
-up() {
-  if [ "$1" -eq "$1" ] 2> /dev/null ; then
-    x=0
-    dir=""
-    while [ $x -lt "${1:-1}" ]; do
-      dir=${dir}../
-      x=$((x+1))
-    done
-    cd "$dir" || exit "unable to cd"
-  else
-    printf "Usage: up <integer>"
-  fi
+mkcd () {
+    mkdir -p -- "$1" && cd -P -- "$1";
 }
 
 # defines an alias if it does not already exist

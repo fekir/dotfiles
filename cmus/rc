@@ -1,2 +1,3 @@
 set mouse=true
 colorscheme solarized-dark
+set softvol=true

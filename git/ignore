@@ -5,6 +5,7 @@ nul
 
 # IDE-generated
 CMakeLists.txt.user
+CMakeUserPresets.json
 .metadata/
 .idea/
 *.iml

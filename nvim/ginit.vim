@@ -36,6 +36,9 @@ elseif has("gui_running") " gvim
 		" gvim, windows only: https://vi.stackexchange.com/questions/1937/how-do-i-get-gvim-to-start-maximised-in-windows
 		autocmd GUIEnter * simalt ~x
 	endif
+	" on windows
+	"   :browse e
+	" opens explorer file dialog for opening files
 endif
 
 " tab navigation with ctrl+tab

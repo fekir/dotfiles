@@ -8,12 +8,26 @@
 :vnoremap <silent> <C-S> <C-C>:update<CR>
 :inoremap <silent> <C-S> <Esc>:update<CR>gi
 
+" use CTRL-S for saving, also in insert mode
+" (<C-O> doe not work well with completions)
+: noremap <C-S>      :update<CR>
+:vnoremap <C-S> <C-C>:update<CR>
+:cnoremap <C-S> <Esc>:update<CR>gi
+
 " use CTRL-F for searching
 : noremap <expr> <C-F> "/"
 :inoremap <expr> <C-F> "\<C-\>\<C-O>/"
 :cnoremap <expr> <C-F> "\<C-\>\<C-O>/"
 
+" use CTRL-L like easy-vim (vim-only) for consistency
+if &insertmode
+  " easy mode _probably_ enabled, to nothing as <esc> does not work
+else
+  :inoremap <C-L> <Esc>
+endif
+
 " use F10 for closing, like mc
+" does not work that well when using -R -m
 : noremap <F10>      :confirm quitall<enter>
 :inoremap <F10> <esc>:confirm quitall<enter>
 :cnoremap <F10> <esc>:confirm quitall<enter>
@@ -59,6 +73,10 @@ else
 	:lnoremap <esc>OH <home>
 	: noremap <esc>OF <end>
 	:lnoremap <esc>OF <end>
+	" should not be necessary, but vim packaged for git
+	" has issues with term set to screen/tmux
+	:inoremap <esc>OH <home>
+	:inoremap <esc>OF <end>
 
 	if has("gui_running") " gvim
 	else

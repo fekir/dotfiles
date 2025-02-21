@@ -31,7 +31,11 @@ $env:PATH="$env:PATH;$env:USERPROFILE\bin";
 
 if((Test-Path "C:/Program Files/Neovim/bin/nvim.exe") -and !(Get-Command "nvim" -ErrorAction SilentlyContinue)){
   Set-Alias -Name nvim -Value "C:/Program Files/Neovim/bin/nvim.exe";
+}elseif((Test-Path "C:/tools/nvim-win64/bin/nvim.exe") -and !(Get-Command "nvim" -ErrorAction SilentlyContinue)){
+  # location used by chocolatey
+  Set-Alias -Name nvim -Value "C:/tools/nvim-win64/bin/nvim.exe";
 }
+
 if(Test-Path "C:/Program Files/Vim/vim91/"){
   # FIXME: query path
   if(!(Get-Command "vim" -ErrorAction SilentlyContinue)){
@@ -60,7 +64,7 @@ if(Get-Command "nvim" -ErrorAction SilentlyContinue){
 
 
 # set bat as predefined VISUAL if available
-# add dua, btop, 
+# add dua, btop, ...
 
 # FIXME: need something like realpath or external programs cannot use it
 #if(Get-Command "editor" -ErrorAction SilentlyContinue){
@@ -81,7 +85,7 @@ if(Test-Path "C:/Program Files (x86)/Midnight Commander/mc.exe"){
 }
 
 if((Test-Path "C:/Program Files/Far Manager/Far.exe") -and !(Get-Command "far" -ErrorAction SilentlyContinue)){
-	Set-Alias -Name far -Value "C:/Program Files/Far Manager/Far.exe";
+  Set-Alias -Name far -Value "C:/Program Files/Far Manager/Far.exe";
 }
 
 
