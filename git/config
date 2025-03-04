@@ -70,64 +70,87 @@
 	show-branch-rm-on-remote = !git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'
 	rm-branch-rm-on-remote = !git fetch --prune && git show-branch-rm-on-remote | xargs --no-run-if-empty git branch -d
 
-[push]
-	default = current
-	#followTags = true
+[branch]
+	sort = -committerdate
 
-[pull]
-	rebase = true
-
-[merge]
-	summary = true
-	ff = false
-
-[diff]
-	algorithm = patience
-	colorMoved = zebra
-
-[log]
-	follow = true
-
-[rebase]
-	autostash = true
-	stat = true
-	missingCommitsCheck = error
-
-[difftool]
-	prompt = false
-
-[mergetool]
-	prompt = false
-
-[submodule]
-	recurse = true
-
-[fetch]
-	recurseSubmodules = true
-
-[credential]
-	helper = cache
-
+[column]
+	# take advantage of horizontal space, similar to ls
+	ui = auto
 [color]
 	ui = true
+[credential]
+	helper = cache
+[core]
+	fscache = true
+	preloadindex = true
+	# do not convert between crlf
+	safecrlf = false
+	autocrlf = false
+[commit]
+	# show content of commit as comment in commit message
+	verbose = true
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+	submodule = log
+[difftool]
+	#prompt = false
+
+[fetch]
+	all = true
+	recurseSubmodules = true
+	## automatically delete branches that have been deleted on remote
+	## in some environments, those are often things that have been merged somewhere
+	## better to enable on a per-project basis
+	#prune = true
+	#pruneTags = true
 
 [help]
 	autocorrect = prompt
 
 [i18n]
 	commitEncoding = UTF-8
-
 [include]
 	path = config.local
+[init]
+	# backwards compatible with previous default
+	defaultBranch = master
 
+[log]
+	# follow renames when vieweing log
+	follow = true
+
+[merge]
+	summary = true
+	ff = false
+	conflictstyle = zdiff3
+[mergetool]
+	prompt = false
+
+[push]
+	default = current
+	autoSetupRemote = true
+	# would push tags automatically if true, better be consistent like with branches
+	followTags = false
+[pull]
+	rebase = true
+
+[rebase]
+	autostash = true
+	autosquash = true
+	# doublecheck documentation for this
+	#updateRefs = true
+	stat = true
+	# avoid missing commits during rebase
+	# delete them explicitely
+	missingCommitsCheck = error
 [remote]
 	prune = true
 
-[core]
-	fscache = true
-	preloadindex = true
-	safecrlf = false
-	autocrlf = false
-
-[init]
-	defaultBranch = master
+[submodule]
+	recurse = true
+[status]
+	submoduleSummary = true

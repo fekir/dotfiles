@@ -1,0 +1,2 @@
+# fullscreen by default and filename
+feh --fullscreen --draw-filename --draw-tinted
