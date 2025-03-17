@@ -9,6 +9,8 @@ Set-PSReadLineOption -EditMode Emacs;
 Set-PSReadLineKeyHandler -Key Ctrl+Shift+C -Function Copy;
 Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste;
 
+$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'
+$PSDefaultParameterValues['Out-File:NoNewLine'] = $true
 
 Remove-Item -ErrorAction SilentlyContinue Alias:ls;
 function ls([string] $dir=".") { (Get-ChildItem $dir).Name; }
