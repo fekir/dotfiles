@@ -15,7 +15,11 @@
 "     :source ~/.config/nvim/init.vim
 "     :source ~/.config/nvim/ginit.vim
 
-:language en_US.utf8
+" on minimal systems, english is missing (only POSIX)
+try
+  :language en_US.utf8
+catch
+endtry
 
 runtime fm.vim
 if filereadable('/usr/share/doc/fzf/examples/fzf.vim')
