@@ -1,0 +1,10 @@
+" ln -s ~/.config/vim/ ~/.vim (not necessary since vim9)
+" on windows, for covering "native" (mklink is for cmd.exe from home)
+"  junction C:\Users\X\vimfiles C:\Users\X\.config\vim\
+"  mklink /J vimfiles           .config\vim
+
+:set nocompatible
+:set clipboard=
+
+:set runtimepath+=~/.config/nvim
+:runtime init.vim
