@@ -13,12 +13,13 @@ select-word-style bash
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-bindkey "${terminfo[kdch1]}" delete-char
-bindkey "${terminfo[kich1]}" overwrite-mode
+[ -n "${terminfo[kdch1]}" ] && bindkey "${terminfo[kdch1]}" delete-char
+[ -n "${terminfo[kich1]}" ] && bindkey "${terminfo[kich1]}" overwrite-mode
 
-bindkey "${terminfo[home]}"  beginning-of-line
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "${terminfo[kend]}" end-of-line
+[ -n "${terminfo[home]}"  ] && bindkey "${terminfo[home]}"  beginning-of-line
+[ -n "${terminfo[khome]}" ] && bindkey "${terminfo[khome]}" beginning-of-line
+[ -n "${terminfo[kend]}"  ] && bindkey "${terminfo[kend]}" end-of-line
+
 bindkey "^[[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
@@ -30,8 +31,6 @@ bindkey '^x^e' edit-command-line
 
 # not optional, defines source_opt_file
 . "${0:h}/common_functions.shrc"
-
-detect_term
 
 # zsh settings
 #  completion

@@ -26,19 +26,6 @@ as_admin() {
 }
 
 
-append_program_dir_to_path "CMake/bin"
-if append_program_dir_to_path "Meld"; then
-  define_alias_ifndef meld Meld.exe
-fi
-append_program_dir_to_path "Mozilla Firefox"
-append_program_dir_to_path "Mozilla Thunderbird"
-if append_program_dir_to_path "Notepad++"; then
-  define_alias_ifndef npp 'notepad++.exe'
-fi
-if append_program_dir_to_path "WinMerge"; then
-  define_alias_ifndef winmerge WinMergeU.exe
-fi
-
 alias ls="ls --color=auto --append-exe"
 
 # FIXME: create function, if -File used, use cygpath
@@ -48,7 +35,7 @@ defender(){
 
 explorer() {(
   # cd instead of passing path as param to avoid issues with cygwin/mingw/git-bash differences and conversions, also explorer is picky about / and \
-  # but cd might fail with server paths, while explorer might prompt for more informations... could try a fallback stratey
+  # but cd might fail with server paths, while explorer might prompt for more informations... could try a fallback strategy
   [ $# -eq 0 ] && set -- "$@" '.';
   if [ $# -eq 1 ] && [ -d "$1" ]; then :;
     cd "$1";

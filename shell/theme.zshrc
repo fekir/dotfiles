@@ -34,8 +34,18 @@ theme_git(){
   precmd() { vcs_info }
   theme_default
   local last_color="%f%E"
-  zstyle ':vcs_info:git:*' formats 'branch:%b'
+  zstyle ':vcs_info:git:*' formats 'branch|%b'
   RPROMPT="$RPROMPT%F{yellow}\$vcs_info_msg_0_$last_color"
+}
+
+contains() {
+  string="$1";
+  substring="$2";
+  if [ "${string#*"$substring"}" != "$string" ]; then :;
+    return 0;
+  else :;
+    return 1;
+  fi
 }
 
 theme_default(){
@@ -47,8 +57,29 @@ theme_default(){
   local check_previous_ret='%(?..%F{red}X[%?])'
 
   PROMPT="$user $cur_location $prompt_tail$last_color"
-  if [ "$+MC_SID" = "1" ] ; then PROMPT="%F{blue}MC $PROMPT"; fi
-  if [[ ${SSH_TTY} ]]; then PROMPT="%F{magenta}[ssh:%M]%F{cyan} $PROMPT"; fi
+  if [ "${MC_SID+x}" ] ; then PROMPT="%F{blue}MC $PROMPT"; fi
+
+  local is_wsl=false;
+  if [ -n "${WSL_DISTRO_NAME+x}" ]; then :;
+    PROMPT="%F{magenta}[wsl]%F{cyan} $PROMPT";
+    is_wsl=true;
+  else :;
+    sysname="$(uname -r)";
+    if contains "$sysname" "microsoft"; then :;
+      PROMPT="%F{magenta}[wsl]%F{cyan} $PROMPT";
+      is_wsl=true;
+    else :;
+      sysname="$(uname -s)";
+      if [ "${sysname:0:9}" = "CYGWIN_NT" ]; then :;
+        PROMPT="%F{magenta}[cyg]%F{cyan} $PROMPT";
+      elif [ "${sysname:0:10}" = "MINGW32_NT" ] || [ "${sysname:0:10}" = "MINGW64_NT" ] || [ "${sysname:0:7}" = "MSYS_NT" ]; then :;
+        PROMPT="%F{magenta}[msys]%F{cyan} $PROMPT";
+      fi
+    fi
+  fi
+
+
+  if [ ${SSH_TTY+x} ] && !is_wsl ; then PROMPT="%F{magenta}[ssh:%M]%F{cyan} $PROMPT"; fi
   RPROMPT="$check_previous_ret$last_color"
   unset THEME_MINIMAL
 }
@@ -94,6 +125,6 @@ else
   theme_long_commands;
 fi
 
-if [ "$+MC_SID" = "1" ] ; then
+if [ "${MC_SID+x}" ] ; then :;
   theme_fix_mc;
 fi
