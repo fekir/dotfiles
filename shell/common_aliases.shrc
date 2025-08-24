@@ -2,12 +2,12 @@
 
 # ls
 alias ls='ls --color=auto'
-define_alias_ifndef 'll' 'ls -lh --color=auto'
-define_alias_ifndef 'la' 'ls -A --color=auto'
-define_alias_ifndef 'l.' 'ls -Ad .* --color=auto'
-define_alias_ifndef 'll.' 'ls -lhAd .* --color=auto'
-define_alias_ifndef 'l' 'ls --color=auto'
-define_alias_ifndef 'lsd' 'ls --group-directories-first --color=auto'
+define_alias_ifndef 'll'  'ls --color=auto -lh'
+define_alias_ifndef 'la'  'ls --color=auto -A'
+define_alias_ifndef 'l.'  'ls --color=auto -Ad .*'
+define_alias_ifndef 'll.' 'ls --color=auto -lhAd .*'
+define_alias_ifndef 'l'   'ls --color=auto'
+define_alias_ifndef 'lsd' 'ls --color=auto --group-directories-first'
 
 define_alias_ifndef 'e' "$HOME/bin/nvim.appimage" "$HOME/bin/nvim.appimage"
 define_alias_ifndef 'e' 'editor' 'editor'
@@ -17,7 +17,7 @@ define_alias_ifndef 'e' 'vim' 'vim'
 define_alias_ifndef 'tigref' 'git reflog --pretty=raw | tig --pretty=raw' 'tig'
 define_alias_ifndef 'ncdu-annex' 'ncdu --color=dark -x --follow-symlinks --exclude=".git"' 'ncdu'
 
-# store result in mucis directory by default
+# store result in music directory by default
 define_alias_opt 'abcde' 'abcde' 'mkdir -p ~/Music/abcde; cd ~/Music/abcde; abcde -o vorbis'
 
 # wget
@@ -34,8 +34,14 @@ grep --color --help >/dev/null 2>/dev/null && alias grep='grep --color=auto'
 define_alias_opt 'nano' 'nano' 'nano -c'
 
 # mc when quitting, exit in mc CWD
-if command -v mc > /dev/null 2>&1 && [ -f /usr/lib/mc/mc-wrapper.sh ]; then
-  alias mc='source /usr/lib/mc/mc-wrapper.sh'
+if command -v mc > /dev/null 2>&1 ; then :;
+  if [ -f /usr/lib/mc/mc-wrapper.sh ]; then
+    alias mc='source /usr/lib/mc/mc-wrapper.sh'
+  elif [ -f /usr/libexec/mc/mc-wrapper.sh ]; then :;
+    # in cygwin, do not use subshell by default as causes long time to start
+    # it is still possible to invoke a shell directly
+    alias mc='source /usr/libexec/mc/mc-wrapper.sh --nosubshell'
+  fi
 fi
 
 # gp

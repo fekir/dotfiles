@@ -18,8 +18,6 @@ shopt -s cdspell                                    # autocorrects cd misspellin
 # not optional, defines source_opt_file
 . "${BASH_SOURCE[0]%/*}/common_functions.shrc"
 
-detect_term
-
 # optionals
 source_opt_file "${BASH_SOURCE[0]%/*}/strict_bash.bashrc"
 source_opt_file "${BASH_SOURCE[0]%/*}/history.bashrc"

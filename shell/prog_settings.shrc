@@ -67,8 +67,7 @@ export GNUPGHOME
 PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/passtore.local"
 export PASSWORD_STORE_DIR
 
-#LESSHISTFILE="$XDG_DATA_HOME/less/history"
-LESSHISTFILE=/dev/null
+LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export LESSHISTFILE
 
 if [ -z ${LESSOPEN+x} ] && [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
@@ -104,7 +103,10 @@ export WINEPREFIX=/nop
 # settings for fzf
 export FZF_CTRL_R_OPTS="--reverse"  # better match first position
 export FZF_TMUX_OPTS="-p" # prefer tmux popup
+export FZF_COMPLETION_TRIGGER='**'
 
+
+# settings for latex, see if it avoids ~/.texlive2024 folder
 # https://tug.org/texlive/doc/texlive-en/texlive-en.html
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_DATA_HOME/texlive/texmf-var"
@@ -112,3 +114,6 @@ export TEXMFCACHE="$XDG_DATA_HOME/texlive/texmf-var"
 export TEXMFCONFIG="$XDG_DATA_HOME/texlive/texmf-config"
 export TEXMACS_HOME_PATH="$XDG_STATE_HOME/texmacs"
 export CHKTEXRC="$XDG_CONFIG_HOME/chktex"
+
+
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
