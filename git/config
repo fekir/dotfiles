@@ -13,6 +13,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cd) %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --abbrev-commit --date=short
 
 	pushfl = push --force-with-lease
+	# deprecated if autoSetupRemote = true
 	pushup = push --set-upstream origin HEAD
 
 	pullrb = "!f(){ git fetch origin \"$1:$1\" && git rebase \"$1\"; }; f"

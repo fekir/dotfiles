@@ -29,4 +29,6 @@ set move = no # do not move messages to another folder
 
 # not mail specific settings, but this is probably the best place where to put them
 set header_cache = ~/.cache/neomutt/headers_$hostname
+ifdef XDG_CACHE_HOME set header_cache = "$XDG_CACHE_HOME/neomutt/headers_$hostname"
 set message_cachedir = ~/.cache/neomutt/bodies
+ifdef XDG_CACHE_HOME set message_cachedir = "$XDG_CACHE_HOME/neomutt/bodies"
