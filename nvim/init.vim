@@ -1,19 +1,7 @@
-" To keep vim and nvim in sync:
-"  ln -s ~/.config/nvim/ ~/.vim
-" on windows, for covering "native" and cygwin-like
-"  junction C:\Users\X\.vim               C:\Users\X\.config\nvim\
-"  junction C:\Users\X\vimfiles           C:\Users\X\.config\nvim\
+" on windows, for covering "native" (mklink for cmd from home)
 "  junction C:\Users\X\AppData\Local\nvim C:\Users\X\.config\nvim\
-" or from cmd from home directory
-"  mklink /J .vim               .config\nvim
-"  mklink /J vimfiles           .config\nvim
 "  mklink /J AppData\Local\nvim .config\nvim
-" and add vimrc/gvimrc in ~/.config/nvim with
-" from vimrc:
-"     :source ~/.config/nvim/init.vim
-" from gvimrc:
-"     :source ~/.config/nvim/init.vim
-"     :source ~/.config/nvim/ginit.vim
+" or define XDG_CONFIG_HOME
 
 " on minimal systems, english is missing (only POSIX)
 try

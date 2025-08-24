@@ -27,7 +27,7 @@ else
 endif
 
 " use F10 for closing, like mc
-" does not work that well when using -R -m
+" does not work that well when using -R or -m
 : noremap <F10>      :confirm quitall<enter>
 :inoremap <F10> <esc>:confirm quitall<enter>
 :cnoremap <F10> <esc>:confirm quitall<enter>

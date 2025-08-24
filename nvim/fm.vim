@@ -1,13 +1,16 @@
 " avoid cluttering home
 
+set undofile
+set swapfile
+
+if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+"if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
+
 if has("nvim")
 	" https://github.com/neovim/neovim/issues/12161
 else
-	if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
-	if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
-	if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
-	if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
-
 	:let g:netrw_home=$XDG_CACHE_HOME.'/vim/'
 
 	:set directory=$XDG_CACHE_HOME/vim/swap//   | call mkdir(&directory, 'p')
@@ -15,7 +18,7 @@ else
 	:set undodir=$XDG_DATA_HOME/vim/undo//      | call mkdir(&undodir,   'p')
 	:set viewdir=$XDG_DATA_HOME/vim/view//      | call mkdir(&viewdir,   'p')
 
-	set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+	:set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 endif
 
 " remove banner
